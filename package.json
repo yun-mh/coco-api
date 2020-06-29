@@ -1,0 +1,17 @@
+{
+  "name": "coco-api",
+  "version": "1.0.0",
+  "description": "GraphQL API for Coco",
+  "repository": "https://github.com/yun-mh/coco-api",
+  "author": "Minho Yun <minhoyun.dev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-yoga": "^1.18.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js"
+  }
+}

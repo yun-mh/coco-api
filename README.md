@@ -19,6 +19,6 @@ GraphQL API for Coco Web and Mobile application using Express, Prisma and GraphQ
 - [ ] Upload a post
 - [ ] Edit the post
 - [ ] Delete the post
-- [ ] Like / Unlike a post
+- [x] Like / Unlike a post
 - [ ] Comment on a post
 - [ ] Delete the comment

@@ -3,6 +3,7 @@ type User {
   avatar: String @default(value: "https://pngimage.net/wp-content/uploads/2018/05/default-profile-pic-png-8.png")
   username: String! @unique
   email: String! @unique
+  password: String!
   bio: String
   following: [User!]! @relation(name: "FollowRelation")
   followers: [User!]! @relation(name: "FollowRelation")
@@ -20,11 +21,10 @@ type Dog {
   id: ID! @id
   avatar: String
   name: String!
-  breed: String!
   gender: String!
   birthdate: String!
-  user: User @relation(name: "DogsOfUser")
-}    
+  user: User! @relation(name: "DogsOfUser")
+}
 
 type Post {
   id: ID! @id

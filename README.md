@@ -6,7 +6,7 @@ GraphQL API for Coco Web and Mobile application using Express, Prisma and GraphQ
 
 - [x] Create account
 - [ ] Implement mailer
-- [ ] Log in
+- [x] Log in
 - [ ] Log out
 - [ ] See user profile
 - [ ] Edit my profile

@@ -21,6 +21,12 @@ type User {
   updatedAt: String
 }
 
+type UserProfile {
+    user: User!
+    posts: [Post!]!
+    dogs: [Dog!]!
+}
+
 type Dog {
   id: ID!
   avatar: String

@@ -9,7 +9,7 @@ GraphQL API for Coco Web and Mobile application using Express, Prisma and GraphQ
 - [x] Log in
 - [ ] Log out
 - [ ] See user profile
-- [ ] Edit my profile
+- [x] Edit my profile
 - [ ] Delete account
 - [x] Follow / Unfollow User
 - [x] Search by user

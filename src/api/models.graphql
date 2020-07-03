@@ -22,9 +22,9 @@ type User {
 }
 
 type UserProfile {
-    user: User!
-    posts: [Post!]!
-    dogs: [Dog!]!
+  user: User!
+  posts: [Post!]!
+  dogs: [Dog!]!
 }
 
 type Dog {
@@ -49,6 +49,12 @@ type Post {
   commentCount: Int!
   createdAt: String
   updatedAt: String
+}
+
+type PostContent {
+  post: Post!
+  comments: [Comment!]!
+  likeCount: Int! 
 }
 
 type Like {

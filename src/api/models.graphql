@@ -3,8 +3,6 @@ type User {
   avatar: String
   username: String!
   email: String!
-  isFollowing: Boolean!
-  isSelf: Boolean!
   bio: String
   following: [User!]!
   followingCount: Int!
@@ -16,7 +14,8 @@ type User {
   likes: [Like!]!
   comments: [Comment!]!
   rooms: [Room!]!
-  loginSecret: String
+  isFollowing: Boolean!
+  isMyself: Boolean!
   createdAt: String
   updatedAt: String
 }

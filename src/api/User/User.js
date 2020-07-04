@@ -7,7 +7,7 @@ export default {
     followers: ({ id }) => prisma.user({ id }).followers(),
     likes: ({ id }) => prisma.user({ id }).likes(),
     comments: ({ id }) => prisma.user({ id }).comments(),
-    chatrooms: ({ id }) => prisma.user({ id }).chatrooms(),
+    chatrooms: ({ id }) => prisma.user({ id }).chatRooms(),
     postsCount: ({ id }) =>
       prisma
         .postsConnection({ where: { user: { id } } })

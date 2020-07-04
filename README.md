@@ -23,7 +23,7 @@ GraphQL API for Coco Web and Mobile application using Express, Prisma and GraphQ
 - [x] Like / Unlike a post
 - [x] Comment on a post
 - [x] Delete the comment
-- [ ] View chat rooms
-- [ ] View a chat room
-- [ ] Send Message
+- [x] View chat rooms
+- [x] View a chat room
+- [x] Send Message
 - [ ] Receive Message

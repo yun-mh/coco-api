@@ -7,13 +7,13 @@ export default {
   Mutation: {
     editDog: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const { id, image, name, gender, birthdate, action } = args;
+      const { id, image, name, gender, birthdate, isMissed, action } = args;
       const { user } = request;
       const dog = await prisma.$exists.dog({ id, user: { id: user.id } });
       if (dog) {
         if (action === EDIT) {
           return prisma.updateDog({
-            data: { image, name, gender, birthdate },
+            data: { image, name, gender, birthdate, isMissed },
             where: { id },
           });
         } else if (action === DELETE) {

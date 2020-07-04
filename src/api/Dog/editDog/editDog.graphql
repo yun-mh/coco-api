@@ -10,6 +10,7 @@ type Mutation {
     name: String
     gender: String
     birthdate: String
+    isMissed: Boolean
     action: ACTIONS!
   ): Dog!
 }

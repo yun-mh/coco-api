@@ -24,6 +24,7 @@ type Dog {
   gender: String!
   birthdate: String!
   user: User! @relation(name: "DogsOfUser")
+  isMissed: Boolean! @default(value: false)
 }
 
 type Post {

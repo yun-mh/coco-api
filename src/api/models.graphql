@@ -22,11 +22,12 @@ type User {
 
 type Dog {
   id: ID!
-  avatar: String
+  image: String
   name: String!
   gender: String!
   birthdate: String!
   user: User!
+  isMissed: Boolean
 }
 
 type Post {

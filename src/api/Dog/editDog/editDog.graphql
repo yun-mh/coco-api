@@ -1,0 +1,15 @@
+enum ACTIONS {
+  EDIT
+  DELETE
+}
+
+type Mutation {
+  editDog(
+    id: String!
+    image: String
+    name: String
+    gender: String
+    birthdate: String
+    action: ACTIONS!
+  ): Dog!
+}

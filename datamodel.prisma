@@ -19,7 +19,7 @@ type User {
 
 type Dog {
   id: ID! @id
-  avatar: String
+  image: String
   name: String!
   gender: String!
   birthdate: String!

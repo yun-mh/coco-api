@@ -1,0 +1,3 @@
+type Query {
+    viewDog(id: String!): Dog!
+}

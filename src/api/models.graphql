@@ -13,17 +13,11 @@ type User {
   postsCount: Int!
   likes: [Like!]!
   comments: [Comment!]!
-  rooms: [Room!]!
+  chatrooms: [ChatRoom!]!
   isFollowing: Boolean!
   isMyself: Boolean!
   createdAt: String
   updatedAt: String
-}
-
-type UserProfile {
-  user: User!
-  posts: [Post!]!
-  dogs: [Dog!]!
 }
 
 type Dog {
@@ -48,12 +42,6 @@ type Post {
   commentCount: Int!
   createdAt: String
   updatedAt: String
-}
-
-type PostContent {
-  post: Post!
-  comments: [Comment!]!
-  likeCount: Int! 
 }
 
 type Like {
@@ -81,7 +69,7 @@ type File {
   updatedAt: String
 }
 
-type Room {
+type ChatRoom {
   id: ID!
   participants: [User!]!
   messages: [Message!]!
@@ -94,7 +82,7 @@ type Message {
   text: String!
   from: User!
   to: User!
-  room: Room!
+  chatroom: ChatRoom!
   createdAt: String
   updatedAt: String
 }

@@ -8,6 +8,7 @@ GraphQL API for Coco Web and Mobile application using Express, Prisma and GraphQ
 - [ ] Implement mailer
 - [x] Log in
 - [ ] Log out
+- [x] See my profile
 - [x] See user profile
 - [x] Edit my profile
 - [ ] Delete account
@@ -22,3 +23,7 @@ GraphQL API for Coco Web and Mobile application using Express, Prisma and GraphQ
 - [x] Like / Unlike a post
 - [x] Comment on a post
 - [x] Delete the comment
+- [ ] View chat rooms
+- [ ] View a chat room
+- [ ] Send Message
+- [ ] Receive Message

@@ -13,7 +13,7 @@ export default {
       if (comment) {
         return prisma.deleteComment({ id });
       } else {
-        throw Error("アクセスできません");
+        throw Error("対象コメントが存在しません。");
       }
     },
   },

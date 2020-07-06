@@ -18,6 +18,7 @@ type User {
   isMyself: Boolean!
   createdAt: String
   updatedAt: String
+  resetSecret: String
 }
 
 type Dog {

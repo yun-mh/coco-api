@@ -2,11 +2,10 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    registerDog: async (_, args, { request, isAuthenticated }) => {
-      isAuthenticated(request);
-      const { user } = request;
-      const { image, name, breed, gender, birthdate } = args;
-      return prisma.createDog({
+    setDog: async (_, args) => {
+      const { image, name, breed, gender, birthdate, email } = args;
+      const user = await prisma.user({ email });
+      await prisma.createDog({
         image,
         name,
         breed,
@@ -14,6 +13,7 @@ export default {
         birthdate,
         user: { connect: { id: user.id } },
       });
+      return true;
     },
   },
 };

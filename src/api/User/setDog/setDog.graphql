@@ -1,0 +1,3 @@
+type Mutation {
+    setDog(image: String, name: String!, breed: String!, gender: String!, birthdate: String!, email: String!): Boolean!
+}

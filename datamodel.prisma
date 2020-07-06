@@ -1,7 +1,7 @@
 type User {
   id: ID! @id
   avatar: String @default(value: "https://pngimage.net/wp-content/uploads/2018/05/default-profile-pic-png-8.png")
-  username: String! @unique
+  username: String!
   email: String! @unique
   password: String!
   bio: String
@@ -22,6 +22,7 @@ type Dog {
   image: String
   name: String!
   gender: String!
+  breed: String!
   birthdate: String!
   user: User! @relation(name: "DogsOfUser")
   isMissed: Boolean! @default(value: false)

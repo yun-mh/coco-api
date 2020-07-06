@@ -1,3 +1,3 @@
 type Mutation {
-    registerDog(image: String, name: String!, gender: String!, birthdate: String!): Dog!
+    registerDog(image: String, name: String!, breed: String!, gender: String!, birthdate: String!): Dog!
 }

@@ -24,6 +24,7 @@ type Dog {
   id: ID!
   image: String
   name: String!
+  breed: String!
   gender: String!
   birthdate: String!
   user: User!

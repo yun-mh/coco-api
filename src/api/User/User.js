@@ -21,7 +21,7 @@ export default {
         .count(),
     followersCount: ({ id }) =>
       prisma
-        .usersConnection({ where: { following_none: { id } } })
+        .usersConnection({ where: { following_some: { id } } })
         .aggregate()
         .count(),
     isFollowing: async (parent, _, { request }) => {

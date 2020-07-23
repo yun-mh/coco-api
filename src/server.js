@@ -5,7 +5,6 @@ import "./env";
 import "./passport";
 import { authenticateJwt } from "./passport";
 import { isAuthenticated } from "./middlewares";
-import cors from "cors";
 
 const PORT = process.env.PORT || 4000;
 

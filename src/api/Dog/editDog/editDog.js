@@ -17,7 +17,8 @@ export default {
             where: { id },
           });
         } else if (action === DELETE) {
-          return prisma.deleteDog({ id });
+          await prisma.deleteDog({ id });
+          return prisma.user({ id: user.id }).dogs();
         }
       } else {
         throw Error("対象犬が存在しません。");

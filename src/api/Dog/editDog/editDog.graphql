@@ -12,5 +12,5 @@ type Mutation {
     birthdate: String
     isMissed: Boolean
     action: ACTIONS!
-  ): Dog!
+  ): [Dog]!
 }

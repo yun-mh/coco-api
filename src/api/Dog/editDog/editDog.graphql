@@ -8,6 +8,7 @@ type Mutation {
     id: String!
     image: String
     name: String
+    breed: String
     gender: String
     birthdate: String
     isMissed: Boolean

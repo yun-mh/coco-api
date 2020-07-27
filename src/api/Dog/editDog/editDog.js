@@ -12,10 +12,11 @@ export default {
       const dog = await prisma.$exists.dog({ id, user: { id: user.id } });
       if (dog) {
         if (action === EDIT) {
-          return prisma.updateDog({
+          await prisma.updateDog({
             data: { image, name, gender, birthdate, isMissed },
             where: { id },
           });
+          return prisma.user({ id: user.id }).dogs();
         } else if (action === DELETE) {
           await prisma.deleteDog({ id });
           return prisma.user({ id: user.id }).dogs();

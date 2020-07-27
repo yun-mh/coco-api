@@ -6,7 +6,7 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const { image, name, breed, gender, birthdate } = args;
-      return prisma.createDog({
+      await prisma.createDog({
         image,
         name,
         breed,
@@ -14,6 +14,7 @@ export default {
         birthdate,
         user: { connect: { id: user.id } },
       });
+      return prisma.user({ id: user.id }).dogs();
     },
   },
 };

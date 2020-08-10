@@ -11,6 +11,7 @@ export default {
             id: user.id,
           },
         },
+        orderBy: "updatedAt_DESC",
       });
     },
   },

@@ -1,0 +1,3 @@
+type Subscription {
+  getMessage(roomId: String!): Message
+}

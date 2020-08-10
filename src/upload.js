@@ -22,12 +22,13 @@ const upload = multer({
   }),
 });
 
-export const uploadMiddleware = upload.single("file");
+export const uploadMiddleware = upload.array("file");
 
 export const uploadController = (req, res) => {
-  const {
-    file: { location },
-  } = req;
-  console.log(location);
-  res.json({ location });
+  const { files } = req;
+  let locations = [];
+  for (const file of files) {
+    locations.push(file.location);
+  }
+  res.json({ locations });
 };

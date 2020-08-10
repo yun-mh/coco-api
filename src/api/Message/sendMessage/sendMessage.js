@@ -24,9 +24,10 @@ export default {
       const participants = await prisma
         .chatRoom({ id: chatroom.id })
         .participants();
-      const getTo = participants.filter(
+      const targetArray = participants.filter(
         (participant) => participant.id !== user.id
-      )[0];
+      );
+      const target = targetArray[0];
       return prisma.createMessage({
         text: message,
         from: {
@@ -34,7 +35,7 @@ export default {
         },
         to: {
           connect: {
-            id: roomId ? getTo.id : toId,
+            id: roomId ? target.id : toId,
           },
         },
         chatroom: {

@@ -4,6 +4,6 @@ export default {
   Message: {
     from: ({ id }) => prisma.message({ id }).from(),
     to: ({ id }) => prisma.message({ id }).to(),
-    chatroom: ({ id }) => prisma.message({ id }).chatRoom(),
+    chatroom: ({ id }) => prisma.message({ id }).chatroom(),
   },
 };

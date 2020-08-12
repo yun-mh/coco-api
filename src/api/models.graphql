@@ -74,17 +74,18 @@ type File {
 type ChatRoom {
   id: ID!
   participants: [User!]!
-  messages: [Message!]!
+  messages: [Message!]
+  updated: String
   createdAt: String
   updatedAt: String
 }
 
 type Message {
   id: ID!
-  text: String!
-  from: User!
-  to: User!
-  chatroom: ChatRoom!
+  text: String
+  from: User
+  to: User
+  chatroom: ChatRoom
   createdAt: String
   updatedAt: String
 }

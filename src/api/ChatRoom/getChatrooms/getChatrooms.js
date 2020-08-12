@@ -2,16 +2,16 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Subscription: {
-    getMessage: {
+    getChatrooms: {
       subscribe: (_, args) => {
-        const { roomId } = args;
+        const { id } = args;
         return prisma.$subscribe
-          .message({
+          .chatRoom({
             AND: [
-              { mutation_in: "CREATED" },
+              { mutation_in: "UPDATED" },
               {
                 node: {
-                  chatroom: { id: roomId },
+                  participants_some: { id },
                 },
               },
             ],

@@ -22,7 +22,7 @@ type Dog {
   name: String!
   gender: String!
   breed: String!
-  birthdate: String!
+  birthdate: DateTime!
   user: User! @relation(name: "DogsOfUser")
   isMissed: Boolean! @default(value: false)
 }
@@ -67,17 +67,18 @@ type File {
 type ChatRoom {
   id: ID! @id
   participants: [User!]!
-  messages: [Message!]!
+  messages: [Message!]
+  updated: DateTime
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }
 
 type Message {
   id: ID! @id
-  text: String!
-  from: User! @relation(name: "From")
-  to: User! @relation(name: "To")
-  chatroom: ChatRoom!
+  text: String
+  from: User @relation(name: "From")
+  to: User @relation(name: "To")
+  chatroom: ChatRoom
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

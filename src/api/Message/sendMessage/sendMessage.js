@@ -6,6 +6,7 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const { roomId, message, toId } = args;
+
       let chatroom;
       if (roomId === undefined) {
         if (user.id !== toId) {
@@ -21,6 +22,7 @@ export default {
       if (!chatroom) {
         throw Error("チャットルームが存在しません。");
       }
+
       const participants = await prisma
         .chatRoom({ id: chatroom.id })
         .participants();
@@ -28,7 +30,8 @@ export default {
         (participant) => participant.id !== user.id
       );
       const target = targetArray[0];
-      return prisma.createMessage({
+
+      await prisma.createMessage({
         text: message,
         from: {
           connect: { id: user.id },
@@ -43,6 +46,11 @@ export default {
             id: chatroom.id,
           },
         },
+      });
+
+      return await prisma.updateChatRoom({
+        data: { updated: new Date() },
+        where: { id: chatroom.id },
       });
     },
   },

@@ -17,8 +17,22 @@ export default {
             },
           },
         });
+        await prisma.createNotification({
+          from: {
+            connect: {
+              id: currentUser.id,
+            },
+          },
+          user: {
+            connect: {
+              id: targetId,
+            },
+          },
+          type: "FOLLOW",
+        });
         return true;
-      } catch {
+      } catch (e) {
+        console.log(e);
         return false;
       }
     },

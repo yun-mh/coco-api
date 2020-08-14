@@ -63,6 +63,22 @@ type Comment {
   updatedAt: String
 }
 
+enum NotificationType {
+  COMMENT
+  FOLLOW
+  LIKE
+}
+
+type Notification {
+  id: ID!
+  from: User!
+  user: User!
+  post: Post
+  type: NotificationType!
+  createdAt: String
+  updatedAt: String
+}
+
 type File {
   id: ID!
   url: String!

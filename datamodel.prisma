@@ -10,6 +10,7 @@ type User {
   posts: [Post!]! @relation(name: "PostsOfUser", onDelete: CASCADE)
   likes: [Like!]! @relation(name: "LikesOfUser", onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentsOfUser", onDelete: CASCADE)
+  notifications: [Notification!]! @relation(name: "NotificationsOfUser", onDelete: CASCADE)
   chatrooms: [ChatRoom!]!
   resetSecret: String
   createdAt: DateTime @createdAt
@@ -52,6 +53,16 @@ type Comment {
   text: String!
   user: User @relation(name: "CommentsOfUser")
   post: Post @relation(name: "CommentsOfPost")
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type Notification {
+  id: ID! @id
+  from: User! @relation(name: "NotificationFrom")
+  user: User! @relation(name: "NotificationsOfUser")
+  post: Post
+  type: String!
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

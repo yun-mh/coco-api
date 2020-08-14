@@ -6,6 +6,10 @@ export default {
       isAuthenticated(request);
       const { postId } = args;
       const { user } = request;
+      const toId = await prisma
+        .post({ id: postId })
+        .user()
+        .id();
       const findTargetOption = {
         AND: [
           {
@@ -20,6 +24,7 @@ export default {
           },
         ],
       };
+
       try {
         const likeIsPressed = await prisma.$exists.like(findTargetOption);
         if (likeIsPressed) {
@@ -36,6 +41,25 @@ export default {
                 id: postId,
               },
             },
+          });
+
+          await prisma.createNotification({
+            from: {
+              connect: {
+                id: user.id,
+              },
+            },
+            user: {
+              connect: {
+                id: toId,
+              },
+            },
+            post: {
+              connect: {
+                id: postId,
+              },
+            },
+            type: "LIKE",
           });
         }
         return true;

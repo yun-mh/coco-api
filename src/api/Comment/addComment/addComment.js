@@ -6,6 +6,11 @@ export default {
       isAuthenticated(request);
       const { postId, text } = args;
       const { user } = request;
+      const toId = await prisma
+        .post({ id: postId })
+        .user()
+        .id();
+
       await prisma.createComment({
         user: {
           connect: {
@@ -18,6 +23,25 @@ export default {
           },
         },
         text,
+      });
+
+      await prisma.createNotification({
+        from: {
+          connect: {
+            id: user.id,
+          },
+        },
+        user: {
+          connect: {
+            id: toId,
+          },
+        },
+        post: {
+          connect: {
+            id: postId,
+          },
+        },
+        type: "COMMENT",
       });
       return true;
     },

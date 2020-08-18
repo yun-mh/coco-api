@@ -5,6 +5,11 @@ export default {
   Mutation: {
     createAccount: async (_, args) => {
       const { avatar, username, email, password } = args;
+      const user = await prisma.$exists.user({ email });
+      if (!user) {
+        return false;
+      }
+
       const encrypted = await encryptPassword(password);
       await prisma.createUser({
         avatar,

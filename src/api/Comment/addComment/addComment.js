@@ -11,7 +11,7 @@ export default {
         .user()
         .id();
 
-      await prisma.createComment({
+      const comment = await prisma.createComment({
         user: {
           connect: {
             id: user.id,
@@ -36,9 +36,9 @@ export default {
             id: toId,
           },
         },
-        post: {
+        comment: {
           connect: {
-            id: postId,
+            id: comment.id,
           },
         },
         type: "COMMENT",

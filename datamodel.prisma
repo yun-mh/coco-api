@@ -61,6 +61,7 @@ type Notification {
   id: ID! @id
   from: User! @relation(name: "NotificationFrom")
   user: User! @relation(name: "NotificationsOfUser")
+  comment: Comment
   post: Post
   type: String!
   createdAt: DateTime @createdAt

@@ -1,3 +1,0 @@
-type Subscription {
-  getCommentNotification(id: String!): Comment
-}

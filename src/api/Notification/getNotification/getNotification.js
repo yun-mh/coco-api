@@ -2,16 +2,16 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Subscription: {
-    getCommentNotification: {
+    getNotification: {
       subscribe: (_, args) => {
         const { id } = args;
         return prisma.$subscribe
-          .comment({
+          .notification({
             AND: [
               { mutation_in: "CREATED" },
               {
                 node: {
-                  post: { user: { id } },
+                  user: { id },
                 },
               },
             ],

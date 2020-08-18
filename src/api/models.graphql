@@ -73,6 +73,7 @@ type Notification {
   id: ID!
   from: User!
   user: User!
+  comment: Comment
   post: Post
   type: NotificationType!
   createdAt: String

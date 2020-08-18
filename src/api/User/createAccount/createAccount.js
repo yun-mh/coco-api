@@ -7,7 +7,7 @@ export default {
       const { avatar, username, email, password } = args;
       const user = await prisma.$exists.user({ email });
       console.log(user);
-      if (!user) {
+      if (user) {
         return false;
       }
 

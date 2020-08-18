@@ -111,6 +111,6 @@ dist
 .vscode-test
 
 generated
-prisma.yml
+build
 
 # End of https://www.toptal.com/developers/gitignore/api/node

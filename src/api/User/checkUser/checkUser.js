@@ -4,7 +4,12 @@ export default {
   Query: {
     checkUser: async (_, args) => {
       const { email } = args;
-      return prisma.user({ email });
+      const user = prisma.user({ email });
+      console.log(user);
+      if (user === null) {
+        return false;
+      }
+      return true;
     },
   },
 };

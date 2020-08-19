@@ -15,20 +15,9 @@ const server = new GraphQLServer({
   context: ({ request }) => ({ request, isAuthenticated }),
 });
 
-const corsOptions = {
-  origin: ["https://api-coco.herokuapp.com/"],
-  credentials: true,
-  methods: ["POST"],
-};
-
 server.express.use(logger("dev"));
 server.express.use(authenticateJwt);
-server.express.post(
-  "/api/upload",
-  cors(corsOptions),
-  uploadMiddleware,
-  uploadController
-);
+server.express.post("/api/upload", cors(), uploadMiddleware, uploadController);
 
 server.start({ port: PORT }, () =>
   console.log(`✅ Server running on http://localhost:${PORT}`)

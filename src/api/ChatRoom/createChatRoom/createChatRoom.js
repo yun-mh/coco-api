@@ -7,12 +7,25 @@ export default {
       const { user } = request;
       const { toId } = args;
 
-      if (user.id !== toId) {
-        return await prisma.createChatRoom({
-          participants: {
-            connect: [{ id: toId }, { id: user.id }],
-          },
-        });
+      const exist = await prisma.$exists.chatRoom({
+        participants: {
+          connect: [{ id: toId }, { id: user.id }],
+        },
+      });
+
+      console.log(exist);
+
+      if (!exist) {
+          if (user.id !== toId) {
+            return await prisma.createChatRoom({
+              participants: {
+                connect: [{ id: toId }, { id: user.id }],
+              },
+            });
+          } 
+
+      }
+        return await prisma.chatRoom({ id: roomId });
       }
     },
   },

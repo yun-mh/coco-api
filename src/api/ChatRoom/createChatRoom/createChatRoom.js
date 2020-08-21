@@ -16,15 +16,14 @@ export default {
       console.log(exist);
 
       if (!exist) {
-          if (user.id !== toId) {
-            return await prisma.createChatRoom({
-              participants: {
-                connect: [{ id: toId }, { id: user.id }],
-              },
-            });
-          } 
-
-      }
+        if (user.id !== toId) {
+          return await prisma.createChatRoom({
+            participants: {
+              connect: [{ id: toId }, { id: user.id }],
+            },
+          });
+        }
+      } else {
         return await prisma.chatRoom({ id: roomId });
       }
     },

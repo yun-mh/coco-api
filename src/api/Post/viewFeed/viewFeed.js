@@ -2,14 +2,12 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Query: {
-    viewFeed: async (_, args, { request, isAuthenticated }) => {
+    viewFeed: async (_, __, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { offset, limit } = args;
       const following = await prisma.user({ id: user.id }).following();
       return prisma.posts({
-        first: limit,
-        skip: offset,
+        first: 3,
         where: {
           user: {
             id_in: [...following.map((user) => user.id), user.id],

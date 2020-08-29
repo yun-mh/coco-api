@@ -6,7 +6,6 @@ export default {
     createAccount: async (_, args) => {
       const { avatar, username, email, password } = args;
       const user = await prisma.$exists.user({ email });
-      console.log(user);
       if (user) {
         return false;
       }

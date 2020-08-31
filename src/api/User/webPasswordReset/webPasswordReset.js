@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { prisma } from "../../../../generated/prisma-client";
-import { sendPasswordResetMail } from "../../../utils";
+import { sendWebPasswordResetMail } from "../../../utils";
 
 export default {
   Mutation: {
@@ -20,7 +20,7 @@ export default {
         console.warn(error);
         return false;
       }
-      await sendPasswordResetMail(email, token);
+      await sendWebPasswordResetMail(email, token);
       return true;
     },
   },

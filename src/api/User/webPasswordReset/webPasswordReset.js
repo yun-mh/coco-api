@@ -1,12 +1,12 @@
 import { prisma } from "../../../../generated/prisma-client";
-import { secretGenerator, sendPasswordResetMail } from "../../../utils";
+import { sendPasswordResetMail } from "../../../utils";
 
 export default {
   Mutation: {
     webPasswordReset: async (_, args) => {
       const { email } = args;
       const user = await prisma.$exists.user({ email });
-      console.log(email);
+      console.log(user);
       if (!user) {
         throw Error("登録されていないメールアドレスです。");
       }

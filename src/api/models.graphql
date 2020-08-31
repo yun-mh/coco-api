@@ -18,6 +18,7 @@ type User {
   createdAt: String
   updatedAt: String
   resetSecret: String
+  resetToken: String
 }
 
 type Dog {

@@ -42,7 +42,6 @@
     "prebuild": "yarn run generate",
     "build": "babel src -d build",
     "postbuild": "cd src && copy ./api/**/*.graphql ../build/api",
-    "prestart": "yarn run build",
     "start": "node build/server.js"
   }
 }

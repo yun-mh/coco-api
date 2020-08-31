@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { prisma } from "../../../../generated/prisma-client";
 import { sendPasswordResetMail } from "../../../utils";
 

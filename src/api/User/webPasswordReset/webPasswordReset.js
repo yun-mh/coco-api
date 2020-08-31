@@ -12,7 +12,7 @@ export default {
       const token = crypto.randomBytes(20).toString("hex");
       try {
         await prisma.updateUser({
-          data: { resetToken: token },
+          data: { resetSecret: token },
           where: { email },
         });
       } catch (error) {

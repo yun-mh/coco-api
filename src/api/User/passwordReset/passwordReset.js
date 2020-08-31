@@ -5,12 +5,11 @@ export default {
   Mutation: {
     passwordReset: async (_, args) => {
       const { email } = args;
-      try {
-        const user = await prisma.$exists.user({ email });
-        console.log(user);
-      } catch (e) {
-        // throw Error("登録されていないメールアドレスです。");
-      }
+      // try {
+      //   const user = await prisma.$exists.user({ email });
+      // } catch (e) {
+      //   throw Error("登録されていないメールアドレスです。");
+      // }
       const resetSecret = secretGenerator();
       try {
         await prisma.updateUser({ data: { resetSecret }, where: { email } });

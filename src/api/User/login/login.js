@@ -13,7 +13,7 @@ export default {
           throw Error("正しいパスワードを入力してください。");
         }
       } catch (e) {
-        if (id === null) {
+        if (id === undefined) {
           throw Error("登録されていないメールアドレスです。");
         }
       }

@@ -13,7 +13,6 @@ type User {
   notifications: [Notification!]! @relation(name: "NotificationsOfUser", onDelete: CASCADE)
   chatrooms: [ChatRoom!]!
   resetSecret: String
-  resetToken: String
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

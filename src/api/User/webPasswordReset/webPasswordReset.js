@@ -6,10 +6,13 @@ export default {
   Mutation: {
     webPasswordReset: async (_, args) => {
       const { email } = args;
-      // const user = await prisma.$exists.user({ email });
-      // if (user === undefined) {
-      //   throw Error("登録されていないメールアドレスです。");
-      // }
+      let id;
+      try {
+        const user = prisma.user({ email }).id();
+        id = user;
+      } catch {
+        return false;
+      }
       const token = crypto.randomBytes(20).toString("hex");
       try {
         await prisma.updateUser({
@@ -20,7 +23,7 @@ export default {
         console.warn(error);
         return false;
       }
-      await sendWebPasswordResetMail(email, token);
+      await sendWebPasswordResetMail(email, id, token);
       return true;
     },
   },

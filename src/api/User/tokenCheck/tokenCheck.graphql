@@ -1,0 +1,3 @@
+type Mutation {
+  tokenCheck(token: String!): Boolean!
+}

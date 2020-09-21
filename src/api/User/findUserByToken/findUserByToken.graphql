@@ -1,3 +1,0 @@
-type Query {
-  findUserByToken(token: String!): User!
-}

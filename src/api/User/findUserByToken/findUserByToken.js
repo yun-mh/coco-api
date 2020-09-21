@@ -4,7 +4,9 @@ export default {
   Query: {
     findUserByToken: async (_, args) => {
       const { token } = args;
-      return prisma.user({ resetSecret: token });
+      const user = await prisma.user({ resetSecret: token });
+      console.log(user);
+      return user;
     },
   },
 };

@@ -38,7 +38,7 @@ export const sendWebPasswordResetMail = (emailAddress, token) => {
     subject: "[ココ] パスワード再設定の案内 🐩",
     html:
       `下のリンクをクリックしてパスワードの変更を行ってください。\n` +
-      `http://localhost:3000/reset/${token}`,
+      `<a href="http://localhost:3000/reset/${token}">http://localhost:3000/reset/${token}</a>`,
   }; // fix this later
   return sendMail(email);
 };

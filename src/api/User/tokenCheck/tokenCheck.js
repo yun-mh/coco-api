@@ -1,7 +1,7 @@
 import { prisma } from "../../../../generated/prisma-client";
 
 export default {
-  Mutation: {
+  Query: {
     tokenCheck: async (_, args) => {
       const { token } = args;
       const exists = await prisma.$exists.user({ resetSecret: token });

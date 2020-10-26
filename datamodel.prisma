@@ -1,7 +1,7 @@
 type User {
   id: ID! @id
   avatar: String @default(value: "https://pngimage.net/wp-content/uploads/2018/05/default-profile-pic-png-8.png")
-  username: String!
+  username: String! @unique
   email: String! @unique
   password: String!
   following: [User!]! @relation(name: "FollowRelation")

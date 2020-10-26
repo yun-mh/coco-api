@@ -6,6 +6,12 @@ export default {
       isAuthenticated(request);
       const { username, avatar } = args;
       const { user } = request;
+
+      const usernameExist = await prisma.$exists.user({ username });
+      if (usernameExist && (user.username !== username)) {
+        throw Error("すでに登録されているユーザ名です。");
+      }
+
       return prisma.updateUser({
         where: { id: user.id },
         data: {

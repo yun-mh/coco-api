@@ -15,10 +15,10 @@ const server = new GraphQLServer({
   context: ({ request }) => ({ request, isAuthenticated }),
 });
 
-server.express.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+// server.express.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 
 server.express.use(logger("dev"));
 server.express.use(authenticateJwt);

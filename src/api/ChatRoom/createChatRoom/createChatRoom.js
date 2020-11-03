@@ -22,13 +22,16 @@ export default {
           });
         }
       } else {
-        return await prisma.chatRooms({ 
+        const result =  await prisma.chatRooms({ 
           where: {
             participants_every: {
               id_in: [user.id, toId]
             }
           }
         });
+
+        console.log(result)
+        return result
       }
     },
   },

@@ -28,10 +28,10 @@ export default {
               id_in: [user.id, toId]
             }
           }
-        })[0];
+        });
 
-        console.log(result)
-        return result
+        console.log(result[0])
+        return result[0];
       }
     },
   },

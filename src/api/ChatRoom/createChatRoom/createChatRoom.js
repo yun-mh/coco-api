@@ -8,11 +8,8 @@ export default {
       const { toId } = args;
 
       const exist = await prisma.$exists.chatRoom({
-        participants: {
-          AND: [
-            { id: toId },
-            { id: user.id }
-          ]
+        participants_every: {
+          id_in: [user.id, toId]
         },
       });
 

@@ -13,8 +13,6 @@ export default {
         },
       });
 
-      console.log(exist);
-
       if (!exist) {
         if (user.id !== toId) {
           return await prisma.createChatRoom({
@@ -25,9 +23,11 @@ export default {
         }
       } else {
         return await prisma.chatRoom({ 
-          participants_every: {
-            id_in: [user.id, toId]
-          }, 
+          where: {
+            participants: {
+              id_in: [user.id, toId]
+            }
+          }
         });
       }
     },

@@ -9,7 +9,10 @@ export default {
 
       const exist = await prisma.$exists.chatRoom({
         participants: {
-          connect: [{ id: toId }, { id: user.id }],
+          AND: [
+            { id: toId },
+            { id: user.id }
+          ]
         },
       });
 
@@ -24,7 +27,11 @@ export default {
           });
         }
       } else {
-        return await prisma.chatRoom({ id: roomId });
+        return await prisma.chatRoom({ 
+          participants: {
+            connect: [{ id: toId }, { id: user.id }],
+          }, 
+        });
       }
     },
   },

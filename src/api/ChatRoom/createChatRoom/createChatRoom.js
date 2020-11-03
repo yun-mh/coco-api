@@ -24,7 +24,7 @@ export default {
       } else {
         return await prisma.chatRooms({ 
           where: {
-            participants: {
+            participants_every: {
               id_in: [user.id, toId]
             }
           }

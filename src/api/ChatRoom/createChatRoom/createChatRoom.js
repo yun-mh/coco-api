@@ -25,8 +25,8 @@ export default {
         }
       } else {
         return await prisma.chatRoom({ 
-          participants: {
-            connect: [{ id: toId }, { id: user.id }],
+          participants_every: {
+            id_in: [user.id, toId]
           }, 
         });
       }

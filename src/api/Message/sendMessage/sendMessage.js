@@ -1,3 +1,4 @@
+import axios from "axios";
 import { prisma } from "../../../../generated/prisma-client";
 
 export default {
@@ -47,6 +48,12 @@ export default {
           },
         },
       });
+
+      // await axios.post("https://exp.host/--/api/v2/push/send", {
+      //   to: ,
+      //   title: ,
+      //   body
+      // })
 
       return await prisma.updateChatRoom({
         data: { updated: new Date() },

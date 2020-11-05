@@ -15,6 +15,7 @@ type User {
   resetSecret: String
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
+  token: String
 }
 
 type Dog {

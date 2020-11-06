@@ -6,7 +6,7 @@ export default {
     sendMessage: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { roomId, message, toId } = args;
+      const { roomId, message, toId, token } = args;
 
       let chatroom;
       if (roomId === undefined) {
@@ -49,11 +49,11 @@ export default {
         },
       });
 
-      // await axios.post("https://exp.host/--/api/v2/push/send", {
-      //   to: ,
-      //   title: ,
-      //   body
-      // })
+      await axios.post("https://exp.host/--/api/v2/push/send", {
+        to: token,
+        title: toId,
+        body: message,
+      })
 
       return await prisma.updateChatRoom({
         data: { updated: new Date() },

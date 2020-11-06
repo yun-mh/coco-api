@@ -1,3 +1,8 @@
 type Mutation {
-    sendMessage(roomId: String, message: String!, toId: String): Message
+  sendMessage(
+    roomId: String
+    message: String!
+    toId: String
+    token: String
+  ): Message
 }

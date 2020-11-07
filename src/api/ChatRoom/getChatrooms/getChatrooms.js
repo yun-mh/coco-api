@@ -19,7 +19,6 @@ export default {
           .node();
       },
       resolve: (payload) => {
-        console.log(payload);
         return payload;
       },
     },

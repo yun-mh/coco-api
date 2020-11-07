@@ -7,8 +7,6 @@ export default {
       const { token } = args;
       const { user } = request;
 
-    //   console.log(token, user)
-
       return prisma.updateUser({
         where: { id: user.id },
         data: {

@@ -51,7 +51,7 @@ export default {
 
       await axios.post("https://exp.host/--/api/v2/push/send", {
         to: token,
-        title: toId,
+        title: myUsername,
         body: message,
       })
 

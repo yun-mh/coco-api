@@ -47,18 +47,15 @@ export default {
             id: chatroom.id,
           },
         },
+        read: false
       });
 
-      console.log(token)
-
       if (token !== "") {
-        const res = await axios.post("https://exp.host/--/api/v2/push/send", {
+        await axios.post("https://exp.host/--/api/v2/push/send", {
           to: token,
           title: user.username,
           body: message,
         })
-
-        console.log(res);
       }
 
       return await prisma.updateChatRoom({

@@ -104,6 +104,7 @@ type Message {
   from: User
   to: User
   chatroom: ChatRoom
+  read: Boolean
   createdAt: String
   updatedAt: String
 }

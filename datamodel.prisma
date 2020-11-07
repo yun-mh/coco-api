@@ -92,6 +92,7 @@ type Message {
   from: User @relation(name: "From")
   to: User @relation(name: "To")
   chatroom: ChatRoom
+  read: Boolean
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

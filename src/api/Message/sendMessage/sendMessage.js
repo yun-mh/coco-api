@@ -49,6 +49,8 @@ export default {
         },
       });
 
+      console.log("here")
+
       if (token !== "") {
         await axios.post("https://exp.host/--/api/v2/push/send", {
           to: token,

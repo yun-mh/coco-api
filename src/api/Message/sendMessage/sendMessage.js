@@ -49,11 +49,13 @@ export default {
         },
       });
 
-      await axios.post("https://exp.host/--/api/v2/push/send", {
+      const res = await axios.post("https://exp.host/--/api/v2/push/send", {
         to: token,
         title: myUsername,
         body: message,
       })
+
+      console.log(res);
 
       return await prisma.updateChatRoom({
         data: { updated: new Date() },

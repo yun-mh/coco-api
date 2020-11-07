@@ -5,7 +5,10 @@ export default {
     viewMyself: async (_, __, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      return await prisma.user({ id: user.id });
+      const res = prisma.user({ id: user.id });
+      console.log(res)
+
+      return res;
     },
   },
 };

@@ -21,7 +21,7 @@ export default {
         chatroom = await prisma.chatRoom({ id: roomId });
       }
       if (!chatroom) {
-        throw Error("チャットルームが存在しません。");
+         throw Error("チャットルームが存在しません。");
       }
 
       const participants = await prisma

@@ -6,7 +6,7 @@ export default {
     sendMessage: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { roomId, message, myUsername, toId, token } = args;
+      const { roomId, message, toId, token } = args;
 
       let chatroom;
       if (roomId === undefined) {
@@ -52,7 +52,7 @@ export default {
       if (token !== "") {
         await axios.post("https://exp.host/--/api/v2/push/send", {
           to: token,
-          title: myUsername,
+          title: user.username,
           body: message,
         })
       }

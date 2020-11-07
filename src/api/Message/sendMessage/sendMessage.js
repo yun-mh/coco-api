@@ -6,7 +6,7 @@ export default {
     sendMessage: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      const { roomId, message, toId, token } = args;
+      const { roomId, message, myUsername, toId, token } = args;
 
       let chatroom;
       if (roomId === undefined) {

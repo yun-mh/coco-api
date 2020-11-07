@@ -2,6 +2,7 @@ type Mutation {
   sendMessage(
     roomId: String
     message: String!
+    myUsername: String
     toId: String
     token: String
   ): Message

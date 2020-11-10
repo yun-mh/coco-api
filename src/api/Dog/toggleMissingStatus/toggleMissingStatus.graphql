@@ -1,0 +1,3 @@
+type Mutation {
+  toggleMissingStatus(id: String!, isMissed: Boolean): Boolean!
+}

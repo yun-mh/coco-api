@@ -41,6 +41,48 @@ type Post {
   updatedAt: DateTime @updatedAt
 }
 
+type LostDogThread {
+  id: ID! @id
+  dog: Dog! @relation(name: "LostDogThreadsOfDog")
+  name: String!
+  breed: String!
+  birthdate: String!
+  gender: String!
+  height: Float
+  weight: Float
+  feature: String
+  images: [LostDogImage!] @relation(name: "ImagesOfLostDogThread" onDelete: CASCADE)
+  lostWhen: DateTime!
+  lostWhere: String!
+  memo: String
+  phone: String
+  email: String
+  reports: [LostDogReport] @relation(name: "ReportsOfLostDogThread" onDelete: CASCADE)
+  isClosed: Boolean!
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type LostDogImage {
+  id: ID! @id
+  thread: LostDogThread! @relation(name: "ImagesOfLostDogThread")
+  url: String!
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type LostDogReport {
+  id: ID! @id
+  thread: LostDogThread! @relation(name: "ReportsOfLostDogThread")
+  location: String!
+  when: DateTime!
+  isHaving: Boolean!
+  name: String!
+  phone: String!
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
 type Like {
   id: ID! @id
   user: User @relation(name: "LikesOfUser")

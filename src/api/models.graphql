@@ -47,6 +47,48 @@ type Post {
   updatedAt: String
 }
 
+type LostDogThread {
+  id: ID!
+  dog: Dog!
+  name: String!
+  breed: String!
+  birthdate: String!
+  gender: String!
+  height: Float
+  weight: Float
+  feature: String
+  images: [LostDogImage!]
+  lostWhen: String!
+  lostWhere: String!
+  memo: String
+  phone: String
+  email: String
+  reports: [LostDogReport]
+  isClosed: Boolean!
+  createdAt: String
+  updatedAt: String
+}
+
+type LostDogImage {
+  id: ID!
+  thread: LostDogThread!
+  url: String!
+  createdAt: String
+  updatedAt: String
+}
+
+type LostDogReport {
+  id: ID!
+  thread: LostDogThread!
+  location: String!
+  when: String!
+  isHaving: Boolean!
+  name: String!
+  phone: String!
+  createdAt: String
+  updatedAt: String
+}
+
 type Like {
   id: ID!
   user: User!

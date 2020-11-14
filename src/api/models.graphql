@@ -52,16 +52,15 @@ type LostDogThread {
   dog: Dog!
   name: String!
   breed: String!
-  birthdate: String!
+  age: Int!
   gender: String!
-  height: Float
+  size: String!
   weight: Float
   feature: String
   images: [LostDogImage!]
   lostWhen: String!
   lostWhere: String!
-  memo: String
-  phone: String
+  phone: String!
   email: String
   reports: [LostDogReport]
   isClosed: Boolean!
@@ -82,7 +81,7 @@ type LostDogReport {
   thread: LostDogThread!
   location: String!
   when: String!
-  isHaving: Boolean!
+  reportType: String!
   name: String!
   phone: String!
   createdAt: String

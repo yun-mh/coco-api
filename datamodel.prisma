@@ -46,16 +46,15 @@ type LostDogThread {
   dog: Dog! @relation(name: "LostDogThreadsOfDog")
   name: String!
   breed: String!
-  birthdate: String!
+  age: Int!
   gender: String!
-  height: Float
+  size: String!
   weight: Float
   feature: String
   images: [LostDogImage!] @relation(name: "ImagesOfLostDogThread" onDelete: CASCADE)
   lostWhen: DateTime!
   lostWhere: String!
-  memo: String
-  phone: String
+  phone: String!
   email: String
   reports: [LostDogReport] @relation(name: "ReportsOfLostDogThread" onDelete: CASCADE)
   isClosed: Boolean!
@@ -76,7 +75,7 @@ type LostDogReport {
   thread: LostDogThread! @relation(name: "ReportsOfLostDogThread")
   location: String!
   when: DateTime!
-  isHaving: Boolean!
+  reportType: String!
   name: String!
   phone: String!
   createdAt: DateTime @createdAt

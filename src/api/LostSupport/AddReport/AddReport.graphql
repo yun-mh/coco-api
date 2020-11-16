@@ -1,0 +1,11 @@
+type Mutation {
+  addReport(
+    threadId: String!
+    reportType: String!
+    location: String!
+    when: String!
+    name: String!
+    phone: String!
+    memo: String
+  ): LostDogReport!
+}

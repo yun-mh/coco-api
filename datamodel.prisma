@@ -79,6 +79,7 @@ type LostDogReport {
   reportType: String!
   name: String!
   phone: String!
+  memo: String
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

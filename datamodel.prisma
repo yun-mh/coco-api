@@ -26,6 +26,7 @@ type Dog {
   breed: String!
   birthdate: DateTime!
   user: User! @relation(name: "DogsOfUser")
+  lostDogThreads: [LostDogThread] @relation(name: "LostDogThreadsOfDog" onDelete: CASCADE)
   isMissed: Boolean! @default(value: false)
 }
 

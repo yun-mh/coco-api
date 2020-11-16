@@ -8,7 +8,7 @@ type Mutation {
     size: String!
     weight: Float
     feature: String
-    images: [String!]!
+    images: [String]
     lostWhen: String
     lostWhere: String
     phone: String!

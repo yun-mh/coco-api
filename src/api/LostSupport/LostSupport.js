@@ -6,4 +6,7 @@ export default {
     images: ({ id }) => prisma.lostDogThread({ id }).images(),
     reports: ({ id }) => prisma.lostDogThread({ id }).reports(),
   },
+  LostDogReport: {
+    thread: ({ id }) => prisma.lostDogReport({ id }).thread(),
+  }
 };

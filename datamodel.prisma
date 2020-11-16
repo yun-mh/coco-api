@@ -52,7 +52,7 @@ type LostDogThread {
   size: String!
   weight: Float
   feature: String
-  images: [LostDogImage!] @relation(name: "ImagesOfLostDogThread" onDelete: CASCADE)
+  images: [LostDogImage] @relation(name: "ImagesOfLostDogThread" onDelete: CASCADE)
   lostWhen: DateTime!
   lostWhere: String!
   phone: String!

@@ -55,6 +55,7 @@ type LostDogThread {
   images: [LostDogImage] @relation(name: "ImagesOfLostDogThread" onDelete: CASCADE)
   lostWhen: DateTime!
   lostWhere: String!
+  owner: String!
   phone: String!
   email: String
   reports: [LostDogReport] @relation(name: "ReportsOfLostDogThread" onDelete: CASCADE)

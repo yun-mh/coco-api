@@ -61,6 +61,7 @@ type LostDogThread {
   images: [LostDogImage!]
   lostWhen: String!
   lostWhere: String!
+  owner: String!
   phone: String!
   email: String
   reports: [LostDogReport]

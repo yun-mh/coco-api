@@ -3,16 +3,34 @@ import { prisma } from "../../../../generated/prisma-client";
 export default {
   Mutation: {
     createThread: async (_, args) => {
-      const { threadId, reportType, location, when, name, phone, memo } = args;
-      return prisma.createLostDogReport({
-        thread: { connect: { id: threadId }},
-        reportType,
-        location,
-        when,
+      const { dogId, name, breed, age, gender, size, weight, feature, images, lostWhen, lostWhere, owner, phone, email } = args;
+      const thread = await prisma.createLostDogThread({
+        dog: { connect: { id: dogId }},
         name,
+        breed,
+        age,
+        gender,
+        size,
+        weight,
+        feature,
+        lostWhen,
+        lostWhere,
         phone,
-        memo
+        email,
+        isClosed: false
       });
+      images.forEach(
+        async (image) =>
+          await prisma.createLostDogImage({
+            url: image,
+            thread: {
+              connect: {
+                id: thread.id,
+              },
+            },
+          })
+      );
+      return thread;
     },
   },
 };

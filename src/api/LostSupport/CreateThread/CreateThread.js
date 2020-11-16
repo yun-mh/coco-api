@@ -15,6 +15,7 @@ export default {
         feature,
         lostWhen,
         lostWhere,
+        owner,
         phone,
         email,
         isClosed: false

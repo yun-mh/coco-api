@@ -21,17 +21,22 @@ export default {
         email,
         isClosed: false
       });
-      images.forEach(
-        async (image) =>
-          await prisma.createLostDogImage({
-            url: image,
-            thread: {
-              connect: {
-                id: thread.id,
+      try {
+        images.forEach(
+          async (image) =>{
+            console.log(image)
+            await prisma.createLostDogImage({
+              url: image,
+              thread: {
+                connect: {
+                  id: thread.id,
+                },
               },
-            },
-          })
-      );
+            })}
+        );
+      } catch (e) {
+        console.log(e)
+      }
       return thread;
     },
   },

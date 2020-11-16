@@ -58,7 +58,7 @@ type LostDogThread {
   size: String!
   weight: Float
   feature: String
-  images: [LostDogImage!]
+  images: [LostDogImage]
   lostWhen: String!
   lostWhere: String!
   owner: String!

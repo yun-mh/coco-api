@@ -4,7 +4,6 @@ export default {
   Mutation: {
     createThread: async (_, args) => {
       const { dogId, name, breed, age, gender, size, weight, feature, images, lostWhen, lostWhere, phone, email } = args;
-      console.log(images)
       const thread = await prisma.createLostDogThread({
         dog: { connect: { id: dogId }},
         name,

@@ -23,7 +23,7 @@ export default {
       });
       images.forEach(
         async (image) =>
-          await prisma.createFile({
+          await prisma.createLostDogImage({
             url: image,
             thread: {
               connect: {

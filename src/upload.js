@@ -26,7 +26,7 @@ export const uploadMiddleware = upload.array("file");
 
 export const uploadController = (req, res) => {
   const { files } = req;
-  console.log(req)
+  console.log(req.body)
   console.log(files)
   let locations = [];
   for (const file of files) {

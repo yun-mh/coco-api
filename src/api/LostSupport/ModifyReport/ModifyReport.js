@@ -4,7 +4,7 @@ export default {
   Mutation: {
     modifyReport: async (_, args) => {
       const { reportId, reportType, location, when, name, phone, memo, token } = args;
-      const reportExist = await prisma.$exists.report({ id: reportId });
+      const reportExist = await prisma.$exists.lostDogReport({ id: reportId });
       if (reportExist) {
         // sending push notification to owner
         // if (token !== "") {

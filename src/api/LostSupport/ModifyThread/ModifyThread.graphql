@@ -1,0 +1,18 @@
+type Mutation {
+  modifyThread(
+    id: String!
+    name: String!
+    breed: String!
+    age: Int!
+    gender: String!
+    size: String!
+    weight: Float
+    feature: String
+    images: [String]
+    lostWhen: String
+    lostWhere: String
+    owner: String!
+    phone: String!
+    email: String
+  ): LostDogThread!
+}

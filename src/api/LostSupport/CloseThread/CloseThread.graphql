@@ -1,0 +1,3 @@
+type Mutation {
+  closeThread(threadId: String!, dogId: String!): LostDogThread!
+}

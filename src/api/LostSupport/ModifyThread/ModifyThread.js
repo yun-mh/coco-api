@@ -4,7 +4,7 @@ export default {
   Mutation: {
     modifyThread: async (_, args) => {
       const { id, name, breed, age, gender, size, weight, feature, images, lostWhen, lostWhere, owner, phone, email } = args;
-      const threadExist = await prisma.$exists.thread({ id });
+      const threadExist = await prisma.$exists.lostDogThread({ id });
       if (threadExist) {
         const thread = await prisma.updateLostDogThread({
           data: { name, breed, age, gender, size, weight, feature, images: [], lostWhen, lostWhere, owner, phone, email },

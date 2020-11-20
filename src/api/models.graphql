@@ -81,6 +81,7 @@ type LostDogImage {
 type LostDogReport {
   id: ID!
   thread: LostDogThread!
+  password: String!
   location: String!
   when: String!
   reportType: String!

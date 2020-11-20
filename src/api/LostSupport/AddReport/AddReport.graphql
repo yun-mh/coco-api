@@ -1,6 +1,7 @@
 type Mutation {
   addReport(
     threadId: String!
+    password: String!
     reportType: String!
     location: String!
     when: String!

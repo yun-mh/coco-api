@@ -75,6 +75,7 @@ type LostDogImage {
 type LostDogReport {
   id: ID! @id
   thread: LostDogThread! @relation(name: "ReportsOfLostDogThread")
+  password: String!
   location: String!
   when: DateTime!
   reportType: String!

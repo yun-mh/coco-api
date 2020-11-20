@@ -10,18 +10,41 @@ export default {
           data: { name, breed, age, gender, size, weight, feature, images: [], lostWhen, lostWhere, owner, phone, email },
           where: { id },
         });
-        console.log(thread);
+        const defaultImages = await prisma.lostDogImages({ where: {
+          thread: {
+            id: thread.id,
+          },
+        }});
+        console.log(defaultImages);
+
         images.forEach(
-          async (image) =>
-            await prisma.createLostDogImage({
-              url: image,
-              thread: {
-                connect: {
-                  id: thread.id,
+          async (image) => {
+            console.log(image);
+            if (!defaultImages.includes(image)) {
+              await prisma.createLostDogImage({
+                url: image,
+                thread: {
+                  connect: {
+                    id: thread.id,
+                  },
                 },
-              },
-            })
+              })
+            }
+          }
         );
+
+        defaultImages.forEach(
+          async (defaultImage) => {
+            if (!images.includes(defaultImage)) {
+              await prisma.deleteLostDogImage({
+                where: {
+                  id: defaultImage.id
+                }
+              })
+            }
+          }
+        );
+
         return prisma.lostDogThread({ id });
       } else {
         throw Error("対象迷子情報が存在しません。");

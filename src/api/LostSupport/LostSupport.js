@@ -8,5 +8,8 @@ export default {
   },
   LostDogReport: {
     thread: ({ id }) => prisma.lostDogReport({ id }).thread(),
+  },
+  LostDogImage: {
+    thread: ({ id }) => prisma.LostDogImage({ id }).thread(),
   }
 };

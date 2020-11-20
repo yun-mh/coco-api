@@ -15,7 +15,7 @@ export default {
 
         return prisma.createLostDogReport({
           thread: { connect: { id: threadId }},
-          passwords,
+          password,
           reportType,
           location,
           when,

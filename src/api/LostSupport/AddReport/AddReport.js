@@ -1,4 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
+import { encryptPassword } from "../../../utils";
 
 export default {
   Mutation: {
@@ -13,9 +14,11 @@ export default {
         //   })
         // }
 
+        const encrypted = await encryptPassword(password);
+
         return prisma.createLostDogReport({
           thread: { connect: { id: threadId }},
-          password,
+          password: encrypted,
           reportType,
           location,
           when,

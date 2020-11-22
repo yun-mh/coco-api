@@ -10,12 +10,14 @@ export default {
           data: { name, breed, age, gender, size, weight, feature, lostWhen, lostWhere, owner, phone, email },
           where: { id },
         });
-        console.log(thread);
-        const defaultImages = await prisma.lostDogImages({ where: {
+
+        let defaultImages = [];
+        const defaultImageData = await prisma.lostDogImages({ where: {
           thread: {
             id: thread.id,
           },
         }}).id();
+        defaultImageData.map(data => defaultImages.push(data.id));
         console.log(defaultImages);
 
         // 既存データにないイメージはアップロードする
@@ -40,9 +42,7 @@ export default {
           async (defaultImage) => {
             if (!images.includes(defaultImage)) {
               await prisma.deleteLostDogImage({
-                where: {
-                  id: defaultImage.id
-                }
+                id: defaultImage.id
               })
             }
           }

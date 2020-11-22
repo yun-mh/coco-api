@@ -42,7 +42,7 @@ export default {
           async (defaultImage) => {
             if (!images.includes(defaultImage)) {
               await prisma.deleteLostDogImage({
-                id: defaultImage.id
+                id: defaultImage
               })
             }
           }

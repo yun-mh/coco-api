@@ -5,7 +5,6 @@ export default {
     modifyThread: async (_, args) => {
       const { id, name, breed, age, gender, size, weight, feature, images, lostWhen, lostWhere, owner, phone, email } = args;
       const threadExist = await prisma.$exists.lostDogThread({ id });
-      console.log(threadExist);
       if (threadExist) {
         const thread = await prisma.updateLostDogThread({
           data: { name, breed, age, gender, size, weight, feature, lostWhen, lostWhere, owner, phone, email },

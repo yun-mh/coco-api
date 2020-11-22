@@ -15,7 +15,7 @@ export default {
           thread: {
             id: thread.id,
           },
-        }});
+        }}).id();
         console.log(defaultImages);
 
         // 既存データにないイメージはアップロードする

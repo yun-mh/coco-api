@@ -5,11 +5,13 @@ export default {
     modifyThread: async (_, args) => {
       const { id, name, breed, age, gender, size, weight, feature, images, lostWhen, lostWhere, owner, phone, email } = args;
       const threadExist = await prisma.$exists.lostDogThread({ id });
+      console.log(threadExist);
       if (threadExist) {
         const thread = await prisma.updateLostDogThread({
-          data: { name, breed, age, gender, size, weight, feature, images: [], lostWhen, lostWhere, owner, phone, email },
+          data: { name, breed, age, gender, size, weight, feature, lostWhen, lostWhere, owner, phone, email },
           where: { id },
         });
+        console.log(thread);
         const defaultImages = await prisma.lostDogImages({ where: {
           thread: {
             id: thread.id,
@@ -17,6 +19,7 @@ export default {
         }});
         console.log(defaultImages);
 
+        // 既存データにないイメージはアップロードする
         images.forEach(
           async (image) => {
             console.log(image);
@@ -33,6 +36,7 @@ export default {
           }
         );
 
+        // 新しくアップデートしようとするイメージで既存データにあるイメージがない場合、削除する
         defaultImages.forEach(
           async (defaultImage) => {
             if (!images.includes(defaultImage)) {

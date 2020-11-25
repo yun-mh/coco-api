@@ -25,8 +25,10 @@ export default {
           where: { id: reportId },
         });
 
+        console.log(token);
         // トークンの引数が存在したらプッシュ通知を行う
         if (token !== "" && token !== undefined) {
+          console.log("fired");
           await axios.post("https://exp.host/--/api/v2/push/send", {
             to: token,
             title: "ココ迷子サポート",

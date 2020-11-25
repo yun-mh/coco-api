@@ -18,12 +18,10 @@ export default {
           },
         }}).id();
         defaultImageData.map(data => defaultImages.push(data.id));
-        console.log(defaultImages);
 
         // 既存データにないイメージはアップロードする
         images.forEach(
           async (image) => {
-            console.log(image);
             if (!defaultImages.includes(image)) {
               await prisma.createLostDogImage({
                 url: image,

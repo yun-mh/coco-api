@@ -1,22 +1,18 @@
+import axios from "axios";
 import { prisma } from "../../../../generated/prisma-client";
 import { encryptPassword } from "../../../utils";
 
 export default {
   Mutation: {
     addReport: async (_, args) => {
+        // 引数の取得
         const { threadId, password, reportType, location, when, name, phone, memo, token } = args;
-        // sending push notification to owner
-        // if (token !== "") {
-        //   await axios.post("https://exp.host/--/api/v2/push/send", {
-        //     to: token,
-        //     title: "迷子状況に新しいレポートが登録されました！",
-        //     body: message,
-        //   })
-        // }
 
+        // パスワード暗号化
         const encrypted = await encryptPassword(password);
-
-        return prisma.createLostDogReport({
+        
+        // レポート生成
+        const result = prisma.createLostDogReport({
           thread: { connect: { id: threadId }},
           password: encrypted,
           reportType,
@@ -26,6 +22,17 @@ export default {
           phone,
           memo
         });
+        
+        // トークンの引数が存在したらプッシュ通知を行う
+        if (token !== "" && token !== undefined) {
+          await axios.post("https://exp.host/--/api/v2/push/send", {
+            to: token,
+            title: "ココ迷子サポート",
+            body: "新しいレポートが登録されました。すぐ確認しましょう！",
+          })
+        }
+
+        return result;
     },
   },
 };

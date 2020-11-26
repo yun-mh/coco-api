@@ -21,7 +21,7 @@ export default {
         chatroom = await prisma.chatRoom({ id: roomId });
       }
       if (!chatroom) {
-         throw Error("チャットルームが存在しません。");
+        throw Error("チャットルームが存在しません。");
       }
 
       const participants = await prisma
@@ -47,15 +47,17 @@ export default {
             id: chatroom.id,
           },
         },
-        read: false
+        read: false,
       });
 
-      if (token !== "") {
+      console.log(token);
+
+      if (token !== "" && token !== undefined) {
         await axios.post("https://exp.host/--/api/v2/push/send", {
           to: token,
           title: user.username,
           body: message,
-        })
+        });
       }
 
       return await prisma.updateChatRoom({

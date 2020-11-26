@@ -16,6 +16,8 @@ export default {
         phone,
         memo,
         token,
+        dogId,
+        user,
       } = args;
 
       // パスワード暗号化

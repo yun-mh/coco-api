@@ -18,8 +18,6 @@ export default {
         user,
       } = args;
 
-      console.log(dogId, user);
-
       // レポートの存在チェック
       const reportExist = await prisma.$exists.lostDogReport({ id: reportId });
       if (reportExist) {

@@ -33,8 +33,6 @@ export default {
         name,
         phone,
         memo,
-        dogId,
-        user,
       });
 
       // トークンの引数が存在したらプッシュ通知を行う

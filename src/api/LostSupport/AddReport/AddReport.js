@@ -31,6 +31,8 @@ export default {
         name,
         phone,
         memo,
+        dogId,
+        user,
       });
 
       // トークンの引数が存在したらプッシュ通知を行う
@@ -39,6 +41,9 @@ export default {
           to: token,
           title: "ココ迷子サポート",
           body: "新しいレポートが登録されました。すぐ確認しましょう！",
+          data: {
+            url: `https://support.cocofordogs.com/${dogId}?owner=${user}`,
+          },
         });
       }
 

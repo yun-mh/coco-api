@@ -14,6 +14,8 @@ export default {
         phone,
         memo,
         token,
+        dogId,
+        user,
       } = args;
 
       // レポートの存在チェック
@@ -30,7 +32,10 @@ export default {
           await axios.post("https://exp.host/--/api/v2/push/send", {
             to: token,
             title: "ココ迷子サポート",
-            body: "レポートが更新されました。すぐ確認しましょう！",
+            body: "レポートが更新されました。クリックしてすぐ確認しましょう！",
+            data: {
+              url: `https://support.cocofordogs.com/${dogId}?owner=${user}`,
+            },
           });
         }
 

@@ -8,5 +8,7 @@ type Mutation {
     phone: String!
     memo: String
     token: String
+    dogId: String
+    user: String
   ): LostDogReport!
 }

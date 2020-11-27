@@ -1,6 +1,7 @@
 import multer from "multer";
+// import multerS3 from "multer-s3";
 import aws from "aws-sdk";
-const s3Storage = require("multer-sharp-s3");
+import multerS3 from "multer-s3-transform";
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_KEY,
@@ -8,24 +9,18 @@ const s3 = new aws.S3({
   region: "ap-northeast-1",
 });
 
-const storage = s3Storage({
-  s3,
-  acl: "public-read",
-  bucket: "coco-for-dogs",
-  multiple: true,
-  metadata: function(req, file, cb) {
-    cb(null, { fieldName: file.fieldname });
-  },
-  key: function(req, file, cb) {
-    cb(null, Date.now().toString());
-  },
-  resize: {
-    width: 600,
-  },
-});
-
 const upload = multer({
-  storage,
+  storage: multerS3({
+    s3,
+    acl: "public-read",
+    bucket: "coco-for-dogs",
+    metadata: function(req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: function(req, file, cb) {
+      cb(null, Date.now().toString());
+    },
+  }),
 });
 
 export const uploadMiddleware = upload.array("file");

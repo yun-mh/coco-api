@@ -12,7 +12,7 @@ const s3 = new aws.S3({
 const storage = s3Storage({
   s3,
   acl: "public-read",
-  bucket: "coco-for-dogs",
+  bucket: config.uploads.aws.Bucket,
   multiple: true,
   metadata: function(req, file, cb) {
     cb(null, { fieldName: file.fieldname });

@@ -1,7 +1,7 @@
 import multer from "multer";
 // import multerS3 from "multer-s3";
-import s3Storage from "multer-sharp-s3";
 import aws from "aws-sdk";
+const s3Storage = require("multer-sharp-s3");
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_KEY,
@@ -12,7 +12,7 @@ const s3 = new aws.S3({
 const storage = s3Storage({
   s3,
   acl: "public-read",
-  bucket: config.uploads.aws.Bucket,
+  bucket: "coco-for-dogs",
   multiple: true,
   metadata: function(req, file, cb) {
     cb(null, { fieldName: file.fieldname });

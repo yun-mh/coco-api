@@ -26,24 +26,15 @@ const upload = multer({
     },
     transforms: [
       {
-        id: "original",
+        id: "uploaded",
         key: function(req, file, cb) {
-          cb(null, "image-original.png");
-        },
-        transform: function(req, file, cb) {
-          cb(null, sharp().png());
-        },
-      },
-      {
-        id: "thumbnail",
-        key: function(req, file, cb) {
-          cb(null, "image-thumbnail.png");
+          cb(null, `${file.fieldname}`);
         },
         transform: function(req, file, cb) {
           cb(
             null,
             sharp()
-              .resize(100, 100)
+              .resize(600)
               .png()
           );
         },
@@ -56,10 +47,10 @@ export const uploadMiddleware = upload.array("file");
 
 export const uploadController = (req, res) => {
   const { files } = req;
-  console.log(req);
   let locations = [];
   for (const file of files) {
-    locations.push(file.location);
+    console.log(file.transforms);
+    locations.push(file.transforms[0]);
   }
   res.json({ locations });
 };

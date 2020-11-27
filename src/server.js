@@ -15,7 +15,6 @@ const server = new GraphQLServer({
   context: ({ request }) => ({ request, isAuthenticated }),
 });
 
-server.express.use(cors());
 server.express.use(logger("dev"));
 server.express.use(authenticateJwt);
 server.express.post("/api/upload", cors(), uploadMiddleware, uploadController);

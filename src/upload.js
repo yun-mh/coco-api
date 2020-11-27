@@ -28,7 +28,7 @@ const upload = multer({
       {
         id: "uploaded",
         key: function(req, file, cb) {
-          cb(null, `${file.fieldname}`);
+          cb(null, `${file.fieldname}-` + Date.now().toString());
         },
         transform: function(req, file, cb) {
           cb(
@@ -50,7 +50,7 @@ export const uploadController = (req, res) => {
   let locations = [];
   for (const file of files) {
     console.log(file.transforms);
-    locations.push(file.transforms[0]);
+    locations.push(file.transforms[0].location);
   }
   res.json({ locations });
 };

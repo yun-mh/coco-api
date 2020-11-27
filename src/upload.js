@@ -1,5 +1,4 @@
 import multer from "multer";
-// import multerS3 from "multer-s3";
 import aws from "aws-sdk";
 import multerS3 from "multer-s3-transform";
 import sharp from "sharp";
@@ -15,12 +14,6 @@ const upload = multer({
     s3,
     acl: "public-read",
     bucket: "coco-for-dogs",
-    // metadata: function(req, file, cb) {
-    //   cb(null, { fieldName: file.fieldname });
-    // },
-    // key: function(req, file, cb) {
-    //   cb(null, Date.now().toString());
-    // },
     shouldTransform: function(req, file, cb) {
       cb(null, /^image/i.test(file.mimetype));
     },
@@ -49,7 +42,6 @@ export const uploadController = (req, res) => {
   const { files } = req;
   let locations = [];
   for (const file of files) {
-    console.log(file.transforms);
     locations.push(file.transforms[0].location);
   }
   res.json({ locations });

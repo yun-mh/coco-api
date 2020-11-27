@@ -28,23 +28,23 @@ const upload = multer({
       {
         id: "original",
         key: function(req, file, cb) {
-          cb(null, "image-original.jpg");
+          cb(null, "image-original.png");
         },
         transform: function(req, file, cb) {
-          cb(null, sharp().jpg());
+          cb(null, sharp().png());
         },
       },
       {
         id: "thumbnail",
         key: function(req, file, cb) {
-          cb(null, "image-thumbnail.jpg");
+          cb(null, "image-thumbnail.png");
         },
         transform: function(req, file, cb) {
           cb(
             null,
             sharp()
               .resize(100, 100)
-              .jpg()
+              .png()
           );
         },
       },

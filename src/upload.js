@@ -2,6 +2,7 @@ import multer from "multer";
 // import multerS3 from "multer-s3";
 import aws from "aws-sdk";
 import multerS3 from "multer-s3-transform";
+import sharp from "sharp";
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_KEY,
@@ -14,12 +15,40 @@ const upload = multer({
     s3,
     acl: "public-read",
     bucket: "coco-for-dogs",
-    metadata: function(req, file, cb) {
-      cb(null, { fieldName: file.fieldname });
+    // metadata: function(req, file, cb) {
+    //   cb(null, { fieldName: file.fieldname });
+    // },
+    // key: function(req, file, cb) {
+    //   cb(null, Date.now().toString());
+    // },
+    shouldTransform: function(req, file, cb) {
+      cb(null, /^image/i.test(file.mimetype));
     },
-    key: function(req, file, cb) {
-      cb(null, Date.now().toString());
-    },
+    transforms: [
+      {
+        id: "original",
+        key: function(req, file, cb) {
+          cb(null, "image-original.jpg");
+        },
+        transform: function(req, file, cb) {
+          cb(null, sharp().jpg());
+        },
+      },
+      {
+        id: "thumbnail",
+        key: function(req, file, cb) {
+          cb(null, "image-thumbnail.jpg");
+        },
+        transform: function(req, file, cb) {
+          cb(
+            null,
+            sharp()
+              .resize(100, 100)
+              .jpg()
+          );
+        },
+      },
+    ],
   }),
 });
 

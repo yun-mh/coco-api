@@ -9,22 +9,24 @@ const s3 = new aws.S3({
   region: "ap-northeast-1",
 });
 
+const storage = s3Storage({
+  s3,
+  acl: "public-read",
+  bucket: "coco-for-dogs",
+  multiple: true,
+  metadata: function(req, file, cb) {
+    cb(null, { fieldName: file.fieldname });
+  },
+  key: function(req, file, cb) {
+    cb(null, Date.now().toString());
+  },
+  resize: {
+    width: 600,
+  },
+});
+
 const upload = multer({
-  storage: s3Storage({
-    s3,
-    acl: "public-read",
-    bucket: "coco-for-dogs",
-    multiple: true,
-    metadata: function(req, file, cb) {
-      cb(null, { fieldName: file.fieldname });
-    },
-    key: function(req, file, cb) {
-      cb(null, Date.now().toString());
-    },
-    resize: {
-      width: 600,
-    },
-  }),
+  storage,
 });
 
 export const uploadMiddleware = upload.array("file");

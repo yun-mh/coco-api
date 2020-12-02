@@ -134,6 +134,23 @@ type File {
   updatedAt: String
 }
 
+type Channel {
+  id: ID!
+  name: String
+  userLocations: [UserLocation]
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type UserLocation {
+  id: ID!
+  user: User!
+  latitude: Float
+  longitude: Float
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
 type ChatRoom {
   id: ID!
   participants: [User!]!

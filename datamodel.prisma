@@ -122,23 +122,6 @@ type File {
   updatedAt: DateTime @updatedAt
 }
 
-type Channel {
-  id: ID! @id
-  name: String! @unique
-  userLocations: [UserLocation] @relation(name: "UserLocationsOfChannel" onDelete: CASCADE)
-  createdAt: DateTime @createdAt
-  updatedAt: DateTime @updatedAt
-}
-
-type UserLocation {
-  id: ID! @id
-  user: User! @relation(name: "UserLocationsOfUser")
-  latitude: Float
-  longitude: Float
-  createdAt: DateTime @createdAt
-  updatedAt: DateTime @updatedAt
-}
-
 type ChatRoom {
   id: ID! @id
   participants: [User!]!

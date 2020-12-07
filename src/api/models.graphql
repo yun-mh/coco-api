@@ -153,3 +153,20 @@ type Message {
   createdAt: String
   updatedAt: String
 }
+
+type Walker {
+  id: ID!
+  user: User!
+  locations: [Location]
+  createdAt: String
+  updatedAt: String
+}
+
+type Location {
+  id: ID!
+  walker: Walker!
+  latitude: Float!
+  longitude: Float!
+  createdAt: String
+  updatedAt: String
+}

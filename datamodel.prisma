@@ -141,3 +141,20 @@ type Message {
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }
+
+type Walker {
+  id: ID! @id
+  user: User! @relation(name: "WalkerOfUser")
+  locations: [Location] @relation(name: "LocationsOfWalker" onDelete: CASCADE)
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}
+
+type Location {
+  id: ID! @id
+  walker: Walker! @relation(name: "LocationsOfWalker")
+  latitude: Float!
+  longitude: Float!
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+}

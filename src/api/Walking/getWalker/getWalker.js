@@ -4,7 +4,7 @@ export default {
   Query: {
     getWalker: async (_, args) => {
       const { userId } = args;
-      return prisma.walker({ id: userId });
+      return prisma.walker({ user: userId });
     },
   },
 };

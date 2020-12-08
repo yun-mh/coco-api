@@ -1,3 +1,0 @@
-type Query {
-  getWalker(userId: String!): Walker!
-}

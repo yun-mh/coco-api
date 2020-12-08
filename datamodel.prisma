@@ -4,7 +4,6 @@ type User {
   username: String! @unique
   email: String! @unique
   password: String!
-  walker: Walker
   following: [User!]! @relation(name: "FollowRelation")
   followers: [User!]! @relation(name: "FollowRelation")
   dogs: [Dog!]! @relation(name: "DogsOfUser", onDelete: CASCADE)
@@ -145,6 +144,7 @@ type Message {
 
 type Walker {
   id: ID! @id
+  user: User! @relation(name: "UserOfWalker")
   locations: [Location] @relation(name: "LocationsOfWalker" onDelete: CASCADE)
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt

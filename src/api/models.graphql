@@ -3,7 +3,6 @@ type User {
   avatar: String
   username: String!
   email: String!
-  walker: Walker
   following: [User!]!
   followingCount: Int!
   followers: [User!]!
@@ -157,6 +156,7 @@ type Message {
 
 type Walker {
   id: ID!
+  user: User!
   locations: [Location]
   createdAt: String
   updatedAt: String

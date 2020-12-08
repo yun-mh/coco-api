@@ -7,7 +7,7 @@ export default {
         const walkers = prisma.$subscribe
           .walkers({
             AND: [
-              { mutation_in: "CREATED" },
+              { mutation_in: ["CREATED", "UPDATED"] },
               //   {
               //     node: {
               //       chatroom: { id: roomId },

@@ -144,7 +144,7 @@ type Message {
 
 type Walker {
   id: ID! @id
-  user: User! @relation(name: "WalkerOfUser")
+  user: User! @relation(name: "WalkerOfUser") @unique
   locations: [Location] @relation(name: "LocationsOfWalker" onDelete: CASCADE)
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt

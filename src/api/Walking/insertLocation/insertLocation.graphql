@@ -1,0 +1,7 @@
+type Mutation {
+  insertLocation(
+    walkerId: String!
+    latitude: Float!
+    longitude: Float!
+  ): Walker!
+}

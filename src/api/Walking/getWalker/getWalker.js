@@ -6,7 +6,7 @@ export default {
       const { userId } = args;
       const walker = prisma.walkers({ where: { user: userId } });
       console.log(walker);
-      return walker[0];
+      return walker;
     },
   },
 };

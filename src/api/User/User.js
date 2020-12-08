@@ -8,6 +8,7 @@ export default {
     following: ({ id }) => prisma.user({ id }).following(),
     followers: ({ id }) => prisma.user({ id }).followers(),
     likes: ({ id }) => prisma.user({ id }).likes(),
+    walker: ({ id }) => prisma.user({ id }).walker(),
     comments: ({ id }) => prisma.user({ id }).comments(),
     chatrooms: ({ id }) => prisma.user({ id }).chatRooms(),
     postsCount: ({ id }) =>

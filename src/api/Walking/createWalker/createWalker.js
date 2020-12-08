@@ -5,7 +5,6 @@ export default {
     createWalker: async (_, __, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      console.log(user);
       return prisma.createWalker({
         user: { connect: { id: user.id } },
       });

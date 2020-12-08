@@ -2,11 +2,11 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
-    createWalker: async (_, __, { request, isAuthenticated }) => {
+    createWalker: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const { user } = request;
+      const { userId } = args;
       return prisma.createWalker({
-        user: { connect: { id: user.id } },
+        user: { connect: { id: userId } },
       });
     },
   },

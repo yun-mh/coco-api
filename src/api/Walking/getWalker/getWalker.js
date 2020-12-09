@@ -15,11 +15,8 @@ export default {
         orderBy: "createdAt_DESC",
       });
 
-      // 散歩者情報が存在すれば一番最新の情報一つを、なければnullをリターンする
-      if (res.length === 0) {
-        return null;
-      }
-      return res[0];
+      // 結果をリターンする
+      return res;
     },
   },
 };

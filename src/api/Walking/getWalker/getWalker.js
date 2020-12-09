@@ -5,7 +5,12 @@ export default {
     getWalker: async (_, __, { request, isAuthenticated }) => {
       isAuthenticated(request);
       const { user } = request;
-      return prisma.walkers({ where: { user: { id: user.id } } });
+      const res = prisma.walkers({
+        where: { user: { id: user.id } },
+        orderBy: "createdAt_DESC",
+      });
+      console.log(res);
+      return res;
     },
   },
 };

@@ -4,7 +4,7 @@ export default {
   Subscription: {
     getWalkersLocation: {
       subscribe: (_, __) => {
-        const walkers = prisma.$subscribe
+        const walker = prisma.$subscribe
           .walker({
             mutation_in: ["CREATED", "UPDATED"],
             node: {
@@ -12,8 +12,8 @@ export default {
             },
           })
           .node();
-        console.log(walkers);
-        return walkers;
+        console.log(walker);
+        return walker;
       },
       resolve: (payload) => {
         return payload;

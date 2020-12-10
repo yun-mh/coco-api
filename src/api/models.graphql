@@ -158,6 +158,7 @@ type Walker {
   id: ID!
   user: User!
   locations: [Location]
+  isWalking: Boolean
   createdAt: String
   updatedAt: String
 }

@@ -146,6 +146,7 @@ type Walker {
   id: ID! @id
   user: User! @relation(name: "UserOfWalker")
   locations: [Location] @relation(name: "LocationsOfWalker" onDelete: CASCADE)
+  isWalking: Boolean @default(value: true)
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

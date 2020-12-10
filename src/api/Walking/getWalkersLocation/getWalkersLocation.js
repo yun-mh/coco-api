@@ -3,17 +3,13 @@ import { prisma } from "../../../../generated/prisma-client";
 export default {
   Subscription: {
     getWalkersLocation: {
-      subscribe: (_, args) => {
+      subscribe: (_, __) => {
         const walkers = prisma.$subscribe
-          .walkers({
-            AND: [
-              { mutation_in: ["CREATED", "UPDATED"] },
-              //   {
-              //     node: {
-              //       chatroom: { id: roomId },
-              //     },
-              //   },
-            ],
+          .walker({
+            mutation_in: ["CREATED", "UPDATED"],
+            node: {
+              isWalking: true,
+            },
           })
           .node();
         console.log(walkers);

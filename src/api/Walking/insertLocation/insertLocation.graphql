@@ -3,5 +3,5 @@ type Mutation {
     walkerId: String!
     latitude: Float!
     longitude: Float!
-  ): Location!
+  ): Walker!
 }

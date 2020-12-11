@@ -166,6 +166,7 @@ type Walker {
 type Location {
   id: ID!
   walker: Walker!
+  walkerId: String!
   latitude: Float!
   longitude: Float!
   createdAt: String

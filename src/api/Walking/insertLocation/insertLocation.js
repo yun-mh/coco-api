@@ -16,6 +16,7 @@ export default {
         },
         create: {
           walker: { connect: { id: walkerId } },
+          walkerId,
           latitude,
           longitude,
         },

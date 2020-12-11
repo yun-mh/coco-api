@@ -145,18 +145,9 @@ type Message {
 type Walker {
   id: ID! @id
   user: User! @relation(name: "UserOfWalker")
-  locations: [Location] @relation(name: "LocationsOfWalker" onDelete: CASCADE)
-  isWalking: Boolean @default(value: true)
-  createdAt: DateTime @createdAt
-  updatedAt: DateTime @updatedAt
-}
-
-type Location {
-  id: ID! @id
-  walker: Walker! @relation(name: "LocationsOfWalker")
-  walkerId: String! @unique
   latitude: Float!
   longitude: Float!
+  isWalking: Boolean @default(value: true)
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
 }

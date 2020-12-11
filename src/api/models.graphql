@@ -157,18 +157,9 @@ type Message {
 type Walker {
   id: ID!
   user: User!
-  locations: [Location]
-  isWalking: Boolean
-  createdAt: String
-  updatedAt: String
-}
-
-type Location {
-  id: ID!
-  walker: Walker!
-  walkerId: String!
   latitude: Float!
   longitude: Float!
+  isWalking: Boolean
   createdAt: String
   updatedAt: String
 }

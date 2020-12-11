@@ -153,7 +153,7 @@ type Walker {
 
 type Location {
   id: ID! @id
-  walker: Walker! @relation(name: "LocationsOfWalker")
+  walker: Walker! @relation(name: "LocationsOfWalker") @unique
   latitude: Float!
   longitude: Float!
   createdAt: DateTime @createdAt

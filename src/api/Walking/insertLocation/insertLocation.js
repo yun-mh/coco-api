@@ -6,10 +6,19 @@ export default {
       isAuthenticated(request);
       const { walkerId, latitude, longitude } = args;
 
-      return prisma.createLocation({
-        walker: { connect: { id: walkerId } },
-        latitude,
-        longitude,
+      return prisma.upsertLocation({
+        where: {
+          walker: walkerId,
+        },
+        update: {
+          latitude,
+          longitude,
+        },
+        create: {
+          walker: { connect: { id: walkerId } },
+          latitude,
+          longitude,
+        },
       });
     },
   },

@@ -8,7 +8,7 @@ export default {
 
       return prisma.upsertLocation({
         where: {
-          walker: walkerId,
+          walkerId,
         },
         update: {
           latitude,

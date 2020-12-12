@@ -7,9 +7,6 @@ export default {
         const walker = prisma.$subscribe
           .walker({
             mutation_in: ["CREATED", "UPDATED"],
-            node: {
-              isWalking: true,
-            },
           })
           .node();
         console.log(walker);

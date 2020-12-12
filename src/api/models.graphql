@@ -157,8 +157,8 @@ type Message {
 type Walker {
   id: ID!
   user: User!
-  latitude: Float!
-  longitude: Float!
+  latitude: Float
+  longitude: Float
   isWalking: Boolean
   createdAt: String
   updatedAt: String

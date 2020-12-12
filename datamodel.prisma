@@ -145,8 +145,8 @@ type Message {
 type Walker {
   id: ID! @id
   user: User! @relation(name: "UserOfWalker")
-  latitude: Float!
-  longitude: Float!
+  latitude: Float
+  longitude: Float
   isWalking: Boolean @default(value: true)
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt

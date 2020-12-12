@@ -2,7 +2,7 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Subscription: {
-    getWalkersLocation: {
+    getNewWalker: {
       subscribe: (_, __) => {
         const walker = prisma.$subscribe
           .walker({

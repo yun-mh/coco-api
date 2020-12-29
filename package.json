@@ -27,6 +27,7 @@
     "multer-s3": "^2.9.0",
     "multer-s3-transform": "^2.10.3",
     "nodemailer": "^6.4.10",
+    "nodemailer-juice": "^1.0.1",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",

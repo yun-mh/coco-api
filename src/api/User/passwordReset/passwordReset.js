@@ -4,20 +4,23 @@ import { secretGenerator, sendPasswordResetMail } from "../../../utils";
 export default {
   Mutation: {
     passwordReset: async (_, args) => {
+      // 各種引数の取得
       const { email } = args;
-      // try {
-      //   const user = await prisma.$exists.user({ email });
-      // } catch (e) {
-      //   throw Error("登録されていないメールアドレスです。");
-      // }
+
+      // リセットコードを生成する
       const resetSecret = secretGenerator();
+
+      // ユーザ情報をアップデートする
       try {
         await prisma.updateUser({ data: { resetSecret }, where: { email } });
       } catch (error) {
         console.warn(error);
         return false;
       }
+
+      // パスワードリセットのためのメールを送信する
       await sendPasswordResetMail(email, resetSecret);
+
       return true;
     },
   },

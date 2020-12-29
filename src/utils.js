@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import sgTransport from "nodemailer-sendgrid-transport";
+import inLineCss from "nodemailer-juice";
 import { adjectives, nouns } from "./words";
 
 export const secretGenerator = () => {
@@ -17,6 +18,7 @@ const sendMail = (email) => {
     },
   };
   const client = nodemailer.createTransport(sgTransport(options));
+  client.use("compile", inLineCss());
   return client.sendMail(email);
 };
 
@@ -25,7 +27,7 @@ export const sendPasswordResetMail = (emailAddress, secret) => {
     from: "no-reply@coco.com",
     to: emailAddress,
     subject: "[ココ] パスワード再設定の案内 🐩",
-    html: `シクリッドコードは <b>${secret}</b>です。<br />アプリの入力欄にコードを入力してください。`,
+    html: `<style>div { backgroundColor: blue; }</style><div>ココ</div>シークレットコードは <b>${secret}</b>です。<br />アプリの入力欄にコードを入力してください。`,
   }; // fix this later
   return sendMail(email);
 };

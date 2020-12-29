@@ -62,6 +62,10 @@ export default {
           to: token,
           title: user.username,
           body: message,
+          data: {
+            type: "message",
+            id: toId,
+          },
         });
       }
 

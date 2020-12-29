@@ -42,6 +42,7 @@ export default {
           title: "ココ迷子サポート",
           body: "新しいレポートが登録されました。すぐ確認しましょう！",
           data: {
+            type: "lostDog",
             url: `https://support.cocofordogs.com/${dogId}?owner=${user}`,
           },
         });

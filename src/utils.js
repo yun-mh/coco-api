@@ -27,7 +27,8 @@ export const sendPasswordResetMail = (emailAddress, secret) => {
     from: "no-reply@coco.com",
     to: emailAddress,
     subject: "[ココ] パスワード再設定の案内 🐩",
-    html: `<style>
+    html: `
+    <style>
     table { width: 100%; border-collapse: collapse; } 
     .logo { color: #eeeeee; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
     .content { background-color: #eeeeee; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
@@ -45,12 +46,13 @@ export const sendPasswordResetMail = (emailAddress, secret) => {
     「ココ」のパスワード再設定の申請を受け付けました。<br />
     パスワードの再設定をご希望の場合は、以下のコードをアプリの入力欄に記入し新しいパスワードをご登録ください。<br /><br />
     <b>${secret}</b><br /><br />
-    ココ
+    ココより
     </td>
     </tr>
     </tbody>
-    </table>シークレットコードは <b>${secret}</b>です。<br />アプリの入力欄にコードを入力してください。`,
-  }; // fix this later
+    </table>
+    `,
+  };
   return sendMail(email);
 };
 
@@ -59,10 +61,33 @@ export const sendWebPasswordResetMail = (emailAddress, id, token) => {
     from: "no-reply@coco.com",
     to: emailAddress,
     subject: "[ココ] パスワード再設定の案内 🐩",
-    html:
-      `下のリンクをクリックしてパスワードの変更を行ってください。\n` +
-      `<a href="http://localhost:3000/reset/${id}/${token}">http://localhost:3000/reset/${id}/${token}</a>`,
-  }; // fix this later
+    html: `
+    <style>
+    table { width: 100%; border-collapse: collapse; } 
+    .logo { color: #eeeeee; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
+    .content { background-color: #eeeeee; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
+    .btn { background-color: rgb(118, 198, 188); padding: 10px; }
+    </style>
+    <table>
+    <tbody>
+    <tr>
+    <td class="logo">
+    <img src="https://coco-for-dogs.s3-ap-northeast-1.amazonaws.com/notification.png" alt="logo" style="display:inline-block;height:2em;width:2em;vertical-align:top;">
+    <div style="display: inline-block; min-height: 2em; vertical-align: top;"> COCO</div>
+    </td>
+    </tr>
+    <tr>
+    <td class="content">
+    「ココ」のパスワード再設定の申請を受け付けました。<br />
+    パスワードの再設定をご希望の場合は、以下のボタンをクリックし新しいパスワードをご登録ください。<br /><br />
+    <a class="btn" href="https://www.cocofordogs.com/reset/${id}/${token}">パスワード再設定へ</a><br /><br />
+    ココより
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    `,
+  };
   return sendMail(email);
 };
 

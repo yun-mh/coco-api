@@ -1,15 +1,21 @@
+import axios from "axios";
 import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
     toggleLike: async (_, args, { request, isAuthenticated }) => {
+      // 認証済みの確認
       isAuthenticated(request);
-      const { postId } = args;
+
+      // 各種引数の取得
+      const { postId, token } = args;
       const { user } = request;
       const toId = await prisma
         .post({ id: postId })
         .user()
         .id();
+
+      // いいね対象のポストの絞り込み
       const findTargetOption = {
         AND: [
           {
@@ -25,11 +31,14 @@ export default {
         ],
       };
 
+      // いいねトグルの処理
       try {
         const likeIsPressed = await prisma.$exists.like(findTargetOption);
         if (likeIsPressed) {
+          // 既にいいねされていた場合、いいねを削除する
           await prisma.deleteManyLikes(findTargetOption);
         } else {
+          // いいねがない場合、いいねをつける
           await prisma.createLike({
             user: {
               connect: {
@@ -43,6 +52,7 @@ export default {
             },
           });
 
+          // 通知のデータを追加
           await prisma.createNotification({
             from: {
               connect: {
@@ -62,6 +72,20 @@ export default {
             type: "LIKE",
           });
         }
+
+        // トークンがある場合、プッシュ通知を行う
+        if (token !== "" && token !== undefined) {
+          await axios.post("https://exp.host/--/api/v2/push/send", {
+            to: token,
+            title: `いいね！`,
+            body: `${user.username}さんが「いいね」を押しました。`,
+            data: {
+              type: "like",
+              id: postId,
+            },
+          });
+        }
+
         return true;
       } catch {
         return false;

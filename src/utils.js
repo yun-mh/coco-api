@@ -67,7 +67,7 @@ export const sendWebPasswordResetMail = (emailAddress, id, token) => {
     .logo { color: #eeeeee; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
     .content { background-color: #eeeeee; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
     .btn { background-color: rgb(118, 198, 188); padding: 10px; border-radius: 3px; text-decoration: none; color: #eeeeee; }
-    .btn:hover { opacity: 0.7 }
+    a:hover { opacity: 0.7 }
     </style>
     <table>
     <tbody>

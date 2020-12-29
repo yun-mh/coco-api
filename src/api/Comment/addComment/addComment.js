@@ -49,11 +49,11 @@ export default {
       if (token !== "" && token !== undefined) {
         await axios.post("https://exp.host/--/api/v2/push/send", {
           to: token,
-          title: user.username,
-          body: text,
+          title: `${user.username}さんがコメントを登録しました。`,
+          body: `${text}`,
           data: {
             type: "comment",
-            id: comment.id,
+            id: postId,
           },
         });
       }

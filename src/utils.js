@@ -29,7 +29,8 @@ export const sendPasswordResetMail = (emailAddress, secret) => {
     subject: "[ココ] パスワード再設定の案内 🐩",
     html: `<style>
     table { width: 100%; border-collapse: collapse; } 
-    .logo { color: #d5d9e1; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
+    .logo { color: #eeeeee; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
+    .content { background-color: #eeeeee; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
     </style>
     <table>
     <tbody>
@@ -37,6 +38,14 @@ export const sendPasswordResetMail = (emailAddress, secret) => {
     <td class="logo">
     <img src="https://coco-for-dogs.s3-ap-northeast-1.amazonaws.com/notification.png" alt="logo" style="display:inline-block;height:2em;width:2em;vertical-align:top;">
     <div style="display: inline-block; min-height: 2em; vertical-align: top;"> COCO</div>
+    </td>
+    </tr>
+    <tr>
+    <td class="content">
+    「ココ」のパスワード再設定の申請を受け付けました。<br />
+    パスワードの再設定をご希望の場合は、以下のコードをアプリの入力欄に記入し新しいパスワードをご登録ください。<br /><br />
+    <b>${secret}</b><br /><br />
+    ココ
     </td>
     </tr>
     </tbody>

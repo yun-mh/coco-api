@@ -27,7 +27,20 @@ export const sendPasswordResetMail = (emailAddress, secret) => {
     from: "no-reply@coco.com",
     to: emailAddress,
     subject: "[ココ] パスワード再設定の案内 🐩",
-    html: `<style>div { backgroundColor: blue; }</style><div>ココ</div>シークレットコードは <b>${secret}</b>です。<br />アプリの入力欄にコードを入力してください。`,
+    html: `<style>
+    table { width: 100%; border-collapse: collapse; } 
+    .logo { color: #d5d9e1; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
+    </style>
+    <table>
+    <tbody>
+    <tr>
+    <td class="logo">
+    <img src="https://coco-for-dogs.s3-ap-northeast-1.amazonaws.com/notification.png" alt="logo" style="display:inline-block;height:2em;width:2em;vertical-align:top;">
+    <div style="display: inline-block; min-height: 2em; vertical-align: top;"> COCO</div>
+    </td>
+    </tr>
+    </tbody>
+    </table>シークレットコードは <b>${secret}</b>です。<br />アプリの入力欄にコードを入力してください。`,
   }; // fix this later
   return sendMail(email);
 };

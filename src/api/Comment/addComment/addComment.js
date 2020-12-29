@@ -4,7 +4,7 @@ export default {
   Mutation: {
     addComment: async (_, args, { request, isAuthenticated }) => {
       isAuthenticated(request);
-      const { postId, text } = args;
+      const { postId, text, token } = args;
       const { user } = request;
       const toId = await prisma
         .post({ id: postId })

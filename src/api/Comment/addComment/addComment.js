@@ -25,6 +25,7 @@ export default {
         text,
       });
 
+      // 通知のデータを追加
       await prisma.createNotification({
         from: {
           connect: {
@@ -43,6 +44,19 @@ export default {
         },
         type: "COMMENT",
       });
+
+      // トークンがある場合、プッシュ通知を行う
+      if (token !== "" && token !== undefined) {
+        await axios.post("https://exp.host/--/api/v2/push/send", {
+          to: token,
+          title: user.username,
+          body: text,
+          data: {
+            type: "comment",
+            id: comment.id,
+          },
+        });
+      }
       return true;
     },
   },

@@ -1,9 +1,13 @@
+import axios from "axios";
 import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
     addComment: async (_, args, { request, isAuthenticated }) => {
+      // 認証済みの確認
       isAuthenticated(request);
+
+      // 各種引数の取得
       const { postId, text, token } = args;
       const { user } = request;
       const toId = await prisma
@@ -11,6 +15,7 @@ export default {
         .user()
         .id();
 
+      // コメント生成
       const comment = await prisma.createComment({
         user: {
           connect: {
@@ -44,8 +49,6 @@ export default {
         },
         type: "COMMENT",
       });
-
-      console.log(1);
 
       // トークンがある場合、プッシュ通知を行う
       if (token !== "" && token !== undefined) {

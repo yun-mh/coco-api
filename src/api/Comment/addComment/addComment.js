@@ -45,6 +45,8 @@ export default {
         type: "COMMENT",
       });
 
+      console.log(1);
+
       // トークンがある場合、プッシュ通知を行う
       if (token !== "" && token !== undefined) {
         await axios.post("https://exp.host/--/api/v2/push/send", {

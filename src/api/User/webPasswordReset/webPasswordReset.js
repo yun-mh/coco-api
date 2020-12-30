@@ -36,7 +36,7 @@ export default {
         });
         console.log(id);
       } catch (error) {
-        console.warn(error);
+        console.warn(error.constructor.name);
         return false;
       }
 

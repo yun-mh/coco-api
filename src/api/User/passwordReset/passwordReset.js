@@ -3,6 +3,9 @@ import { secretGenerator, sendPasswordResetMail } from "../../../utils";
 
 export default {
   Mutation: {
+    /**
+     * パスワードリセット（モバイル用）の申し込みに対応する
+     */
     passwordReset: async (_, args) => {
       // 各種引数の取得
       const { email } = args;

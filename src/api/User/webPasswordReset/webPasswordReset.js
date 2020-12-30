@@ -16,13 +16,13 @@ export default {
       //   throw Error("登録されていないメールアドレスです。");
       // }
 
-      let id;
-      try {
-        const user = await prisma.user({ email }).id();
-        id = user;
-      } catch {
-        return false;
-      }
+      // let id;
+      // try {
+      //   const user = await prisma.user({ email }).id();
+      //   id = user;
+      // } catch {
+      //   return false;
+      // }
 
       // パスワードリセットページにアクセスするためのトークンを生成する
       const token = crypto.randomBytes(20).toString("hex");

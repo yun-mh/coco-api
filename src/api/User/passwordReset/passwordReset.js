@@ -10,7 +10,7 @@ export default {
       // 各種引数の取得
       const { email } = args;
 
-      // リセットコードを生成する
+      // リセット認証コードを生成する
       const resetSecret = secretGenerator();
 
       // ユーザ情報をアップデートする

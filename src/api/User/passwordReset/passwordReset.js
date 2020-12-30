@@ -17,8 +17,7 @@ export default {
       try {
         await prisma.updateUser({ data: { resetSecret }, where: { email } });
       } catch (error) {
-        console.warn(error);
-        return false;
+        throw Error("登録されていないメールアドレスです。");
       }
 
       // パスワードリセットのためのメールを送信する

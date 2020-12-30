@@ -11,19 +11,6 @@ export default {
       // 各種引数の取得
       const { email } = args;
 
-      // const exist = await prisma.$exists.user({ email });
-      // if (!exist) {
-      //   throw Error("登録されていないメールアドレスです。");
-      // }
-
-      // let id;
-      // try {
-      //   const user = await prisma.user({ email }).id();
-      //   id = user;
-      // } catch {
-      //   return false;
-      // }
-
       // パスワードリセットページにアクセスするためのトークンを生成する
       const token = crypto.randomBytes(20).toString("hex");
 
@@ -34,10 +21,8 @@ export default {
           data: { resetSecret: token },
           where: { email },
         });
-        console.log(id);
       } catch (error) {
-        console.warn(error.constructor.name);
-        return false;
+        throw Error("登録されていないメールアドレスです。");
       }
 
       // パスワードリセットのためのメールを送信する

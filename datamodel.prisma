@@ -105,8 +105,8 @@ type Comment {
 
 type Notification {
   id: ID! @id
-  from: User! @relation(name: "NotificationFrom")
-  user: User! @relation(name: "NotificationsOfUser")
+  from: User! @relation(name: "NotificationFrom", onDelete: CASCADE)
+  user: User! @relation(name: "NotificationsOfUser", onDelete: CASCADE)
   comment: Comment
   post: Post
   type: String!

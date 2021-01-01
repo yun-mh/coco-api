@@ -75,14 +75,31 @@ export default {
 
         // トークンがある場合、プッシュ通知を行う
         if (token !== "" && token !== undefined) {
-          await axios.post("https://exp.host/--/api/v2/push/send", {
-            to: token,
-            title: `いいね！`,
-            body: `${user.username}さんが「いいね」を押しました。`,
-            data: {
-              type: "like",
-              id: postId,
+          // await axios.post("https://exp.host/--/api/v2/push/send", {
+          //   to: token,
+          //   title: `いいね！`,
+          //   body: `${user.username}さんが「いいね」を押しました。`,
+          //   data: {
+          //     type: "like",
+          //     id: postId,
+          //   },
+          // });
+
+          await fetch("https://fcm.googleapis.com/fcm/send", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `key=${process.env.FCM_KEY}`,
             },
+            body: JSON.stringify({
+              to: token,
+              priority: "normal",
+              data: {
+                experienceId: "@yun-mh/coco",
+                title: `いいね！`,
+                message: `${user.username}さんが「いいね」を押しました。`,
+              },
+            }),
           });
         }
 

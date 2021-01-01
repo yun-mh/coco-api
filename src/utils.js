@@ -44,7 +44,7 @@ export const sendRegistrationDoneMail = (emailAddress) => {
     <style>
     table { width: 100%; border-collapse: collapse; } 
     .logo { color: #ffffff; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
-    .content { background-color: #ffffff; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
+    .content { background-color: #eeeeee; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
     </style>
     <table>
     <tbody>
@@ -83,7 +83,7 @@ export const sendPasswordResetMail = (emailAddress, secret) => {
     <style>
     table { width: 100%; border-collapse: collapse; } 
     .logo { color: #ffffff; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
-    .content { background-color: #ffffff; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
+    .content { background-color: #eeeeee; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
     </style>
     <table>
     <tbody>
@@ -124,8 +124,8 @@ export const sendWebPasswordResetMail = (emailAddress, id, token) => {
     <style>
     table { width: 100%; border-collapse: collapse; } 
     .logo { color: #ffffff; background-color: rgb(118, 198, 188); font-size: 300%; padding: 20px; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; line-height: 2em; }
-    .content { background-color: #ffffff; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
-    .btn { background-color: rgb(118, 198, 188); padding: 10px; border-radius: 3px; text-decoration: none; color: #eeeeee; }
+    .content { background-color: #eeeeee; color: #333333; padding: 20px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
+    .btn { background-color: rgb(118, 198, 188); padding: 10px; border-radius: 3px; text-decoration: none; color: #ffffff; }
     a:hover { opacity: 0.7 }
     </style>
     <table>

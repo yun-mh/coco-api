@@ -3,6 +3,9 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Mutation: {
+    /**
+     * 対象ユーザをフォローする
+     */
     follow: async (_, args, { request, isAuthenticated }) => {
       // 認証済みの確認
       isAuthenticated(request);
@@ -54,7 +57,6 @@ export default {
 
         return true;
       } catch (e) {
-        console.log(e);
         return false;
       }
     },

@@ -71,19 +71,19 @@ export default {
             },
             type: "LIKE",
           });
-        }
 
-        // トークンがある場合、プッシュ通知を行う
-        if (token !== "" && token !== undefined) {
-          await axios.post("https://exp.host/--/api/v2/push/send", {
-            to: token,
-            title: `いいね！`,
-            body: `${user.username}さんが「いいね」を押しました。`,
-            data: {
-              type: "like",
-              id: postId,
-            },
-          });
+          // トークンがある場合、プッシュ通知を行う
+          if (token !== "" && token !== undefined) {
+            await axios.post("https://exp.host/--/api/v2/push/send", {
+              to: token,
+              title: `いいね！`,
+              body: `${user.username}さんが「いいね」を押しました。`,
+              data: {
+                type: "like",
+                id: postId,
+              },
+            });
+          }
         }
 
         return true;

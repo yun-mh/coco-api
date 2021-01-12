@@ -1,17 +1,17 @@
-# ココ API
+# Coco API
 
-「ココ API」は犬のための SNS「ココ」の API です。
+"Coco API" is the API for Coco, SNS for dogs.
 
 Read this in other languages: [日本語](./README.md), [English](./README.en.md), [한국어](./README.ko.md)
 
-## 使用技術
+## Technologies
 
-このプロジェクトで使った主な技術は以下のどおりです。
+This project is created with:
 
 - Apollo GraphQL yoga: 1.18.3
 - Prisma: 1.34.10
 
-## 構成
+## Structure
 
 | <img src="./api.jpg" alt="drawing" width="600"/> |
 | :----------------------------------------------: |

@@ -25,7 +25,7 @@ export default {
         throw Error("登録されていないメールアドレスです。");
       }
 
-      // パスワードリセットのためのメールを送信
+      // パスワードリセットのためのメールを送信する
       await sendWebPasswordResetMail(email, id, token);
 
       return true;

@@ -17,10 +17,12 @@ export default {
       // ユーザ情報をアップデートする
       let id;
       try {
-        id = await prisma.updateUser({
-          data: { resetSecret: token },
-          where: { email },
-        });
+        id = await prisma
+          .updateUser({
+            data: { resetSecret: token },
+            where: { email },
+          })
+          .id();
       } catch (error) {
         throw Error("登録されていないメールアドレスです。");
       }

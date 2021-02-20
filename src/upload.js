@@ -28,6 +28,7 @@ const upload = multer({
             null,
             sharp()
               .resize(600)
+              .withMetadata()
               .png()
           );
         },

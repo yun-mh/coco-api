@@ -1,6 +1,0 @@
-endpoint: "https://coco-prisma-560b469c9e.herokuapp.com/coco/prod"
-datamodel: datamodel.prisma
-
-generate:
-  - generator: javascript-client
-    output: ./generated/prisma-client/
